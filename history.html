@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Park History — Friends of Aztalan State Park Inc.</title>
+  <meta name="description" content="Explore the history of Aztalan State Park — from the ancient Mississippian settlement to its designation as a National Historic Landmark. Timeline, archaeology, and more.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-primary: #5C3D1E;
+      --color-secondary: #2D5016;
+      --color-accent: #C4742A;
+      --color-bg: #FAF6EE;
+      --color-bg-alt: #EDE8DC;
+      --color-text: #2C1A0E;
+      --color-text-light: #6B5240;
+      --color-top-bar: #2C1A0E;
+      --color-top-bar-text: #E8D5B0;
+      --color-nav: #5C3D1E;
+      --color-nav-text: #FAF6EE;
+      --color-footer: #2D5016;
+      --color-footer-text: #D4E8C2;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Lato', sans-serif; background: var(--color-bg); color: var(--color-text); line-height: 1.7; }
+
+    .top-bar { background: var(--color-top-bar); color: var(--color-top-bar-text); font-size: 0.825rem; letter-spacing: 0.03em; padding: 0.45rem 1.5rem; display: flex; justify-content: center; align-items: center; gap: 2rem; flex-wrap: wrap; }
+    .top-bar a { color: var(--color-top-bar-text); text-decoration: none; transition: color 0.2s; }
+    .top-bar a:hover { color: var(--color-accent); }
+    .top-bar-divider { color: #6B5240; }
+    .nav-wrapper { position: sticky; top: 0; z-index: 1000; background: var(--color-nav); box-shadow: 0 2px 12px rgba(0,0,0,0.25); }
+    nav { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; display: flex; align-items: center; justify-content: space-between; min-height: 64px; }
+    .nav-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: var(--color-nav-text); }
+    .nav-logo { width: 42px; height: 42px; background: var(--color-accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: #fff; flex-shrink: 0; }
+    .nav-brand-text { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 600; line-height: 1.25; color: var(--color-nav-text); }
+    .nav-brand-text span { display: block; font-size: 0.7rem; font-family: 'Lato', sans-serif; font-weight: 300; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.8; }
+    .nav-links { display: flex; list-style: none; gap: 0.25rem; align-items: center; }
+    .nav-links a { color: var(--color-nav-text); text-decoration: none; font-size: 0.9rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; padding: 0.5rem 0.75rem; border-radius: 4px; transition: background 0.2s, color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { background: var(--color-accent); color: #fff; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; background: none; border: none; }
+    .hamburger span { display: block; width: 26px; height: 2px; background: var(--color-nav-text); border-radius: 2px; transition: all 0.3s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* PAGE HERO */
+    .page-hero { position: relative; background: var(--color-primary); color: #fff; padding: 6rem 1.5rem; overflow: hidden; }
+    .page-hero-bg { position: absolute; inset: 0; background-image: url('https://upload.wikimedia.org/wikipedia/commons/9/91/Aztalan_State_Park_Entrance_Sign.jpg'); background-size: cover; background-position: center; opacity: 0.2; }
+    .page-hero-content { position: relative; max-width: 800px; margin: 0 auto; text-align: center; }
+    .page-hero-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--color-accent); margin-bottom: 1rem; display: block; }
+    .page-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 900; line-height: 1.15; margin-bottom: 1.25rem; }
+    .page-hero p { font-size: 1.15rem; opacity: 0.88; line-height: 1.75; font-weight: 300; }
+
+    section { padding: 5rem 1.5rem; }
+    .container { max-width: 1200px; margin: 0 auto; }
+    .section-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-accent); margin-bottom: 0.5rem; }
+    .section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 700; color: var(--color-primary); line-height: 1.2; margin-bottom: 1rem; }
+
+    /* FOUNDING STORY */
+    .story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+    .story-text p { font-size: 1.05rem; color: var(--color-text-light); line-height: 1.85; margin-bottom: 1.25rem; }
+    .story-text p:last-child { margin-bottom: 0; }
+    .story-images { display: flex; flex-direction: column; gap: 1.5rem; }
+    .story-images img { width: 100%; border-radius: 8px; display: block; box-shadow: 0 6px 24px rgba(92,61,30,0.18); }
+    .img-caption { font-size: 0.8rem; color: var(--color-text-light); font-style: italic; margin-top: 0.5rem; text-align: center; }
+
+    /* TIMELINE */
+    .timeline-section { background: var(--color-primary); color: #fff; }
+    .timeline-section .section-label { color: var(--color-accent); }
+    .timeline-section .section-title { color: #fff; }
+    .timeline { position: relative; margin-top: 3rem; }
+    .timeline::before { content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 2px; background: rgba(196,116,42,0.4); transform: translateX(-50%); }
+    .timeline-item { display: flex; gap: 0; margin-bottom: 0; position: relative; }
+    .timeline-item:nth-child(odd) { flex-direction: row; }
+    .timeline-item:nth-child(even) { flex-direction: row-reverse; }
+    .timeline-content {
+      width: calc(50% - 3rem);
+      padding: 1.75rem 2rem;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(196,116,42,0.25);
+      border-radius: 8px;
+      margin-bottom: 2rem;
+      transition: background 0.3s;
+    }
+    .timeline-content:hover { background: rgba(255,255,255,0.12); }
+    .timeline-item:nth-child(odd) .timeline-content { margin-right: 3rem; }
+    .timeline-item:nth-child(even) .timeline-content { margin-left: 3rem; }
+    .timeline-dot {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      top: 1.75rem;
+      width: 16px;
+      height: 16px;
+      background: var(--color-accent);
+      border-radius: 50%;
+      border: 3px solid var(--color-primary);
+      z-index: 1;
+      flex-shrink: 0;
+    }
+    .timeline-year {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--color-accent);
+      display: block;
+      margin-bottom: 0.4rem;
+    }
+    .timeline-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+    .timeline-desc { font-size: 0.9rem; color: rgba(255,255,255,0.78); line-height: 1.65; }
+
+    /* ARCHAEOLOGICAL SIGNIFICANCE */
+    .arch-section { background: var(--color-bg-alt); }
+    .arch-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .arch-image img { width: 100%; border-radius: 8px; display: block; box-shadow: 0 8px 32px rgba(92,61,30,0.2); }
+    .arch-text p { font-size: 1.05rem; color: var(--color-text-light); line-height: 1.85; margin-bottom: 1.25rem; }
+    .arch-highlights { margin: 2rem 0; display: flex; flex-direction: column; gap: 1.25rem; }
+    .arch-highlight { display: flex; gap: 1rem; align-items: flex-start; padding: 1.25rem; background: var(--color-bg); border-radius: 8px; border-left: 4px solid var(--color-accent); }
+    .arch-highlight-icon { font-size: 1.5rem; flex-shrink: 0; }
+    .arch-highlight-body h4 { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--color-primary); margin-bottom: 0.3rem; }
+    .arch-highlight-body p { font-size: 0.9rem; color: var(--color-text-light); line-height: 1.6; }
+
+    /* LANDMARK BAND */
+    .landmark-band { background: var(--color-secondary); color: #fff; padding: 4rem 1.5rem; text-align: center; }
+    .landmark-inner { max-width: 800px; margin: 0 auto; }
+    .landmark-badges { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+    .landmark-badge { background: rgba(255,255,255,0.12); border: 2px solid rgba(255,255,255,0.25); border-radius: 8px; padding: 1.5rem 2rem; text-align: center; min-width: 180px; }
+    .landmark-badge-year { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: #a8d88a; display: block; }
+    .landmark-badge-label { font-size: 0.8rem; color: rgba(255,255,255,0.8); margin-top: 0.25rem; line-height: 1.4; }
+    .landmark-inner h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 700; margin-bottom: 1rem; }
+    .landmark-inner p { font-size: 1.05rem; opacity: 0.88; line-height: 1.75; }
+
+    /* FADE IN */
+    .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    .fade-in-delay-1 { transition-delay: 0.1s; }
+    .fade-in-delay-2 { transition-delay: 0.2s; }
+    .fade-in-delay-3 { transition-delay: 0.3s; }
+
+    footer { background: var(--color-footer); color: var(--color-footer-text); padding: 4rem 1.5rem 2rem; }
+    .footer-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+    .footer-brand h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: #fff; margin-bottom: 0.5rem; }
+    .footer-tagline { font-size: 0.85rem; font-style: italic; color: rgba(212,232,194,0.8); margin-bottom: 1.25rem; }
+    .footer-desc { font-size: 0.9rem; color: rgba(212,232,194,0.85); line-height: 1.7; margin-bottom: 1.5rem; }
+    .footer-social { display: flex; gap: 0.75rem; }
+    .footer-social a { width: 38px; height: 38px; background: rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--color-footer-text); text-decoration: none; font-size: 1rem; transition: background 0.2s, color 0.2s; }
+    .footer-social a:hover { background: var(--color-accent); color: #fff; }
+    .footer-col h4 { font-family: 'Playfair Display', serif; font-size: 1rem; color: #fff; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.15); }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .footer-links a { color: rgba(212,232,194,0.85); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-links a:hover { color: #fff; }
+    .footer-contact-item { display: flex; align-items: flex-start; gap: 0.5rem; font-size: 0.9rem; color: rgba(212,232,194,0.85); margin-bottom: 0.5rem; line-height: 1.5; }
+    .footer-bottom { max-width: 1200px; margin: 0 auto; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.15); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; font-size: 0.82rem; color: rgba(212,232,194,0.7); }
+
+    @media (max-width: 900px) {
+      .story-grid, .arch-grid { grid-template-columns: 1fr; }
+      .timeline::before { left: 24px; }
+      .timeline-item, .timeline-item:nth-child(even) { flex-direction: column; }
+      .timeline-content { width: 100%; margin-left: 3.5rem !important; margin-right: 0 !important; }
+      .timeline-dot { left: 24px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .footer-brand { grid-column: 1 / -1; }
+    }
+    @media (max-width: 700px) {
+      .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: var(--color-nav); padding: 1rem; gap: 0.25rem; box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
+      .nav-links.open { display: flex; }
+      .hamburger { display: flex; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .landmark-badges { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+    <a href="mailto:info@aztalan.us">✉ info@aztalan.us</a>
+    <span class="top-bar-divider">|</span>
+    <a href="https://aztalan.us">🌐 aztalan.us</a>
+  </div>
+
+  <div class="nav-wrapper">
+    <nav>
+      <a href="index.html" class="nav-brand">
+        <div class="nav-logo">A</div>
+        <div class="nav-brand-text">
+          Friends of Aztalan
+          <span>State Park Inc.</span>
+        </div>
+      </a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="mission.html">Mission</a></li>
+        <li><a href="history.html" class="active">History</a></li>
+        <li><a href="projects.html">Programs</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="page-hero-content">
+      <span class="page-hero-label">A Story 1,000 Years in the Making</span>
+      <h1>The History of Aztalan</h1>
+      <p>From a thriving Mississippian metropolis to a National Historic Landmark — the extraordinary story of one of North America's most significant archaeological sites.</p>
+    </div>
+  </div>
+
+  <!-- FOUNDING STORY -->
+  <section>
+    <div class="container">
+      <div class="story-grid">
+        <div class="story-text">
+          <p class="section-label fade-in">The Ancient Settlement</p>
+          <h2 class="section-title fade-in fade-in-delay-1">Where a Great Civilization<br>Once Flourished</h2>
+          <p class="fade-in fade-in-delay-2">Around 900 CE, a group of Mississippian people — likely with origins near Cahokia, the great city near modern East St. Louis — established a thriving settlement on the banks of the Crawfish River in what is now Jefferson County, Wisconsin.</p>
+          <p class="fade-in fade-in-delay-2">This settlement, which we now call Aztalan, was no ordinary village. It was a planned community covering what would become 172 acres, enclosed by a massive wooden stockade with regularly spaced bastions. Within its walls, residents built three major platform mounds — earthen monuments constructed by hand over many generations, serving as ceremonial centers, elite residences, and expressions of political and religious power.</p>
+          <p class="fade-in fade-in-delay-2">The people of Aztalan were part of an expansive trade network that reached from the Great Lakes region to the Gulf Coast. Copper from Lake Superior, marine shells from the Gulf, and exotic goods from hundreds of miles away have been found in archaeological excavations here — testament to the far-reaching connections of this northern Mississippian outpost.</p>
+          <p class="fade-in fade-in-delay-2">The settlement flourished for approximately 400 years before being abandoned around 1300 CE. The reasons for the abandonment remain a subject of ongoing scholarly debate — climate change, conflict, resource depletion, and changing political dynamics within the broader Mississippian world have all been proposed.</p>
+        </div>
+        <div class="story-images fade-in fade-in-delay-2">
+          <div>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/8/8c/Ancient_Aztalan_Village_DSC_0_109.jpg" alt="Reconstructed ancient Aztalan village area">
+            <p class="img-caption">The reconstructed area of the ancient Aztalan settlement, showing the scale of this remarkable site.</p>
+          </div>
+          <div>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Aztalan_State_Park_Entrance_Sign.jpg" alt="Aztalan State Park entrance sign">
+            <p class="img-caption">The entrance to Aztalan State Park in Jefferson County, Wisconsin.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIMELINE -->
+  <section class="timeline-section">
+    <div class="container">
+      <p class="section-label fade-in">From Discovery to Preservation</p>
+      <h2 class="section-title fade-in fade-in-delay-1">Historical Milestones</h2>
+      <p style="color:rgba(255,255,255,0.8); font-size:1.05rem; max-width:640px; line-height:1.75; margin-bottom:3rem;" class="fade-in fade-in-delay-2">The story of Aztalan spans centuries — from its ancient origins to its modern recognition as one of America's most important archaeological sites.</p>
+
+      <div class="timeline">
+        <div class="timeline-item fade-in">
+          <div class="timeline-content">
+            <span class="timeline-year">~900 CE</span>
+            <h3 class="timeline-title">Mississippian Settlement Established</h3>
+            <p class="timeline-desc">Mississippian people, likely connected to the great city of Cahokia, establish a major settlement on the Crawfish River. Construction of platform mounds and the wooden stockade begins.</p>
+          </div>
+          <div class="timeline-dot"></div>
+        </div>
+        <div class="timeline-item fade-in fade-in-delay-1">
+          <div class="timeline-content">
+            <span class="timeline-year">~1300 CE</span>
+            <h3 class="timeline-title">Settlement Abandoned</h3>
+            <p class="timeline-desc">After approximately 400 years of habitation, the Aztalan settlement is abandoned. The reasons remain debated, but the earthworks and stockade remains are left behind, slowly being reclaimed by the Wisconsin prairie.</p>
+          </div>
+          <div class="timeline-dot"></div>
+        </div>
+        <div class="timeline-item fade-in">
+          <div class="timeline-content">
+            <span class="timeline-year">1835</span>
+            <h3 class="timeline-title">Timothy Johnson Discovers the Ruins</h3>
+            <p class="timeline-desc">European-American settler Timothy Johnson encounters the earthworks and stockade remains, becoming the first to document the site in the era of American settlement. His discovery sparks early interest in the ruins.</p>
+          </div>
+          <div class="timeline-dot"></div>
+        </div>
+        <div class="timeline-item fade-in fade-in-delay-1">
+          <div class="timeline-content">
+            <span class="timeline-year">1850</span>
+            <h3 class="timeline-title">Increase A. Lapham Surveys for the Smithsonian</h3>
+            <p class="timeline-desc">Renowned Wisconsin naturalist and archaeologist Increase A. Lapham conducts a formal survey of the Aztalan earthworks for the Smithsonian Institution, publishing his findings and establishing the site's scientific importance.</p>
+          </div>
+          <div class="timeline-dot"></div>
+        </div>
+        <div class="timeline-item fade-in">
+          <div class="timeline-content">
+            <span class="timeline-year">1919–1920</span>
+            <h3 class="timeline-title">First Archaeological Excavations</h3>
+            <p class="timeline-desc">The Milwaukee Public Museum conducts the first systematic archaeological excavations at Aztalan, uncovering artifacts, features, and evidence of the site's Mississippian culture origins and connections to Cahokia.</p>
+          </div>
+          <div class="timeline-dot"></div>
+        </div>
+        <div class="timeline-item fade-in fade-in-delay-1">
+          <div class="timeline-content">
+            <span class="timeline-year">1922</span>
+            <h3 class="timeline-title">Citizens Purchase the Mounds</h3>
+            <p class="timeline-desc">Concerned citizens purchase the mound area and surrounding land to protect it from development. The site is designated "Mounds Park" — a precursor to its eventual state park status.</p>
+          </div>
+          <div class="timeline-dot"></div>
+        </div>
+        <div class="timeline-item fade-in">
+          <div class="timeline-content">
+            <span class="timeline-year">1947</span>
+            <h3 class="timeline-title">Wisconsin Legislature Acts</h3>
+            <p class="timeline-desc">The Wisconsin State Legislature passes legislation to formally create Aztalan State Park, ensuring permanent protection for the archaeological site under state management.</p>
+          </div>
+          <div class="timeline-dot"></div>
+        </div>
+        <div class="timeline-item fade-in fade-in-delay-1">
+          <div class="timeline-content">
+            <span class="timeline-year">1952</span>
+            <h3 class="timeline-title">Opens as Aztalan State Park</h3>
+            <p class="timeline-desc">Aztalan State Park officially opens to the public, offering visitors access to the ancient mounds, earthworks, and natural beauty of the Crawfish River corridor for the first time as a managed public site.</p>
+          </div>
+          <div class="timeline-dot"></div>
+        </div>
+        <div class="timeline-item fade-in">
+          <div class="timeline-content">
+            <span class="timeline-year">1964</span>
+            <h3 class="timeline-title">National Historic Landmark Designation</h3>
+            <p class="timeline-desc">The federal government designates Aztalan a National Historic Landmark — the highest recognition for archaeological and historic sites in the United States — affirming its exceptional national significance.</p>
+          </div>
+          <div class="timeline-dot"></div>
+        </div>
+        <div class="timeline-item fade-in fade-in-delay-1">
+          <div class="timeline-content">
+            <span class="timeline-year">1966</span>
+            <h3 class="timeline-title">National Register of Historic Places</h3>
+            <p class="timeline-desc">Aztalan is added to the National Register of Historic Places, providing additional legal protections and affirming the site's enduring historical and cultural significance.</p>
+          </div>
+          <div class="timeline-dot"></div>
+        </div>
+        <div class="timeline-item fade-in">
+          <div class="timeline-content">
+            <span class="timeline-year">1968</span>
+            <h3 class="timeline-title">Stockade Reconstructed</h3>
+            <p class="timeline-desc">Using original post holes identified during archaeological excavations, crews reconstruct a section of the ancient wooden stockade — giving visitors a tangible sense of the community that once lived within its walls.</p>
+          </div>
+          <div class="timeline-dot"></div>
+        </div>
+        <div class="timeline-item fade-in fade-in-delay-1">
+          <div class="timeline-content">
+            <span class="timeline-year">1990s–Present</span>
+            <h3 class="timeline-title">Friends Group Formed</h3>
+            <p class="timeline-desc">Friends of Aztalan State Park Inc. is established to provide charitable and educational support for the park. The organization grows to sponsor tours, research, events, and a major Visitor Center capital campaign.</p>
+          </div>
+          <div class="timeline-dot"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARCHAEOLOGICAL SIGNIFICANCE -->
+  <section class="arch-section">
+    <div class="container">
+      <div class="arch-grid">
+        <div class="arch-image fade-in">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/Aztalan_platform_mound.jpg" alt="Platform mound at Aztalan State Park">
+          <p class="img-caption" style="margin-top:0.75rem;">One of Aztalan's three major platform mounds, built entirely by hand by Mississippian people.</p>
+        </div>
+        <div class="arch-text">
+          <p class="section-label fade-in">Why It Matters</p>
+          <h2 class="section-title fade-in fade-in-delay-1">Archaeological Significance</h2>
+          <p class="fade-in fade-in-delay-2">Aztalan is Wisconsin's most significant archaeological site and one of the most important in the entire upper Midwest. It represents the northernmost major expression of Mississippian culture — the sophisticated civilization that built Cahokia, the largest pre-Columbian city north of Mexico.</p>
+          <div class="arch-highlights fade-in fade-in-delay-2">
+            <div class="arch-highlight">
+              <div class="arch-highlight-icon">🏔️</div>
+              <div class="arch-highlight-body">
+                <h4>Three Major Platform Mounds</h4>
+                <p>Constructed entirely by hand, the mounds served as ceremonial platforms, elite residences, and civic monuments — the defining architectural achievement of Mississippian culture.</p>
+              </div>
+            </div>
+            <div class="arch-highlight">
+              <div class="arch-highlight-icon">🛡️</div>
+              <div class="arch-highlight-body">
+                <h4>Reconstructed Wooden Stockade</h4>
+                <p>The reconstructed palisade wall — built using original post hole evidence — demonstrates the scale and sophistication of Aztalan's defensive architecture.</p>
+              </div>
+            </div>
+            <div class="arch-highlight">
+              <div class="arch-highlight-icon">🔗</div>
+              <div class="arch-highlight-body">
+                <h4>Extensive Trade Connections</h4>
+                <p>Artifacts from Gulf Coast shells to Lake Superior copper demonstrate that Aztalan was a node in a vast continental trade network stretching thousands of miles.</p>
+              </div>
+            </div>
+            <div class="arch-highlight">
+              <div class="arch-highlight-icon">🔭</div>
+              <div class="arch-highlight-body">
+                <h4>Ongoing Research</h4>
+                <p>Aztalan continues to yield new discoveries. Archaeological research supported by the Friends group advances our understanding of this remarkable site and its people.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LANDMARK BAND -->
+  <div class="landmark-band">
+    <div class="landmark-inner">
+      <div class="landmark-badges fade-in">
+        <div class="landmark-badge">
+          <span class="landmark-badge-year">1964</span>
+          <div class="landmark-badge-label">National Historic<br>Landmark</div>
+        </div>
+        <div class="landmark-badge">
+          <span class="landmark-badge-year">1966</span>
+          <div class="landmark-badge-label">National Register of<br>Historic Places</div>
+        </div>
+        <div class="landmark-badge">
+          <span class="landmark-badge-year">1952</span>
+          <div class="landmark-badge-label">Wisconsin<br>State Park</div>
+        </div>
+      </div>
+      <h2 class="fade-in fade-in-delay-1">One of America's Most Significant Archaeological Sites</h2>
+      <p class="fade-in fade-in-delay-2">Aztalan State Park holds the dual distinction of National Historic Landmark and listing on the National Register of Historic Places — recognitions that underscore the exceptional importance of protecting and interpreting this irreplaceable resource.</p>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>Friends of Aztalan State Park Inc.</h3>
+        <p class="footer-tagline">Preserving Wisconsin's Ancient Heritage</p>
+        <p class="footer-desc">A 501(c)(3) nonprofit supporting interpretive, scientific, historical, and educational visitor services at Aztalan State Park — Wisconsin's premier archaeological site and a National Historic Landmark since 1964.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Facebook">f</a>
+          <a href="#" aria-label="Instagram">&#9678;</a>
+          <a href="#" aria-label="Twitter">𝕏</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="mission.html">Mission &amp; Values</a></li>
+          <li><a href="history.html">Park History</a></li>
+          <li><a href="projects.html">Programs</a></li>
+          <li><a href="team.html">Board of Directors</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <div class="footer-contact-item">📍 PO Box 855, Lake Mills, WI 53551</div>
+        <div class="footer-contact-item">📞 <a href="tel:6086582854" style="color:inherit;">608-658-2854</a></div>
+        <div class="footer-contact-item">✉ <a href="mailto:info@aztalan.us" style="color:inherit;">info@aztalan.us</a></div>
+        <div class="footer-contact-item" style="margin-top:0.75rem; font-size:0.8rem; opacity:0.7;">EIN: 04-3732507</div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Friends of Aztalan State Park Inc. All rights reserved.</span>
+      <span>EIN: 04-3732507 · Lake Mills, Wisconsin</span>
+    </div>
+  </footer>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+    hamburger.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('open');
+      hamburger.classList.toggle('open', open);
+      hamburger.setAttribute('aria-expanded', open);
+    });
+    navLinks.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        hamburger.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', false);
+      });
+    });
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

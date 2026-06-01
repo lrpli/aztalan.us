@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Programs &amp; Projects — Friends of Aztalan State Park Inc.</title>
+  <meta name="description" content="Explore the programs, events, and projects of Friends of Aztalan State Park — from group tours and Indigenous Gardening Day to our $1 million Visitor Center campaign.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-primary: #5C3D1E;
+      --color-secondary: #2D5016;
+      --color-accent: #C4742A;
+      --color-bg: #FAF6EE;
+      --color-bg-alt: #EDE8DC;
+      --color-text: #2C1A0E;
+      --color-text-light: #6B5240;
+      --color-top-bar: #2C1A0E;
+      --color-top-bar-text: #E8D5B0;
+      --color-nav: #5C3D1E;
+      --color-nav-text: #FAF6EE;
+      --color-footer: #2D5016;
+      --color-footer-text: #D4E8C2;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Lato', sans-serif; background: var(--color-bg); color: var(--color-text); line-height: 1.7; }
+
+    .top-bar { background: var(--color-top-bar); color: var(--color-top-bar-text); font-size: 0.825rem; letter-spacing: 0.03em; padding: 0.45rem 1.5rem; display: flex; justify-content: center; align-items: center; gap: 2rem; flex-wrap: wrap; }
+    .top-bar a { color: var(--color-top-bar-text); text-decoration: none; transition: color 0.2s; }
+    .top-bar a:hover { color: var(--color-accent); }
+    .top-bar-divider { color: #6B5240; }
+    .nav-wrapper { position: sticky; top: 0; z-index: 1000; background: var(--color-nav); box-shadow: 0 2px 12px rgba(0,0,0,0.25); }
+    nav { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; display: flex; align-items: center; justify-content: space-between; min-height: 64px; }
+    .nav-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: var(--color-nav-text); }
+    .nav-logo { width: 42px; height: 42px; background: var(--color-accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: #fff; flex-shrink: 0; }
+    .nav-brand-text { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 600; line-height: 1.25; color: var(--color-nav-text); }
+    .nav-brand-text span { display: block; font-size: 0.7rem; font-family: 'Lato', sans-serif; font-weight: 300; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.8; }
+    .nav-links { display: flex; list-style: none; gap: 0.25rem; align-items: center; }
+    .nav-links a { color: var(--color-nav-text); text-decoration: none; font-size: 0.9rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; padding: 0.5rem 0.75rem; border-radius: 4px; transition: background 0.2s, color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { background: var(--color-accent); color: #fff; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; background: none; border: none; }
+    .hamburger span { display: block; width: 26px; height: 2px; background: var(--color-nav-text); border-radius: 2px; transition: all 0.3s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* PAGE HERO */
+    .page-hero { position: relative; background: var(--color-secondary); color: #fff; padding: 6rem 1.5rem; overflow: hidden; }
+    .page-hero-bg { position: absolute; inset: 0; background-image: url('https://upload.wikimedia.org/wikipedia/commons/a/ae/AztalanStateParkSignMounds.jpg'); background-size: cover; background-position: center; opacity: 0.18; }
+    .page-hero-content { position: relative; max-width: 800px; margin: 0 auto; text-align: center; }
+    .page-hero-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: #a8d88a; margin-bottom: 1rem; display: block; }
+    .page-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 900; line-height: 1.15; margin-bottom: 1.25rem; }
+    .page-hero p { font-size: 1.15rem; opacity: 0.88; line-height: 1.75; font-weight: 300; }
+
+    section { padding: 5rem 1.5rem; }
+    .container { max-width: 1200px; margin: 0 auto; }
+    .section-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-accent); margin-bottom: 0.5rem; }
+    .section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 700; color: var(--color-primary); line-height: 1.2; margin-bottom: 1rem; }
+
+    /* PROGRAMS GRID */
+    .programs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 2.5rem;
+    }
+    .program-card {
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(92,61,30,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+      display: flex;
+      flex-direction: column;
+    }
+    .program-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(92,61,30,0.18);
+    }
+    .program-img-wrap { position: relative; overflow: hidden; }
+    .program-img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+    .program-card:hover .program-img { transform: scale(1.05); }
+    .program-badge {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      background: var(--color-accent);
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.75rem;
+      border-radius: 3px;
+    }
+    .program-body { padding: 2rem; flex: 1; display: flex; flex-direction: column; }
+    .program-icon { font-size: 2rem; margin-bottom: 0.75rem; display: block; }
+    .program-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--color-primary);
+      margin-bottom: 0.75rem;
+    }
+    .program-desc { font-size: 0.95rem; color: var(--color-text-light); line-height: 1.75; flex: 1; }
+    .program-meta {
+      margin-top: 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .program-tag {
+      background: var(--color-bg-alt);
+      color: var(--color-text-light);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.75rem;
+      border-radius: 20px;
+    }
+
+    /* VISITOR CENTER CAMPAIGN */
+    .campaign-section { background: var(--color-primary); color: #fff; }
+    .campaign-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .campaign-text .section-label { color: var(--color-accent); }
+    .campaign-text .section-title { color: #fff; }
+    .campaign-text p { font-size: 1.05rem; color: rgba(255,255,255,0.85); line-height: 1.8; margin-bottom: 1.25rem; }
+    .progress-wrap { margin: 2rem 0; }
+    .progress-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.75rem; }
+    .progress-raised { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: var(--color-accent); }
+    .progress-goal { font-size: 0.9rem; color: rgba(255,255,255,0.7); }
+    .progress-bar-bg { height: 16px; background: rgba(255,255,255,0.15); border-radius: 8px; overflow: hidden; }
+    .progress-bar-fill { height: 100%; width: 0; background: linear-gradient(90deg, var(--color-accent), #e8943d); border-radius: 8px; transition: width 1.5s cubic-bezier(0.25, 1, 0.5, 1); }
+    .progress-bar-fill.animated { width: 40%; }
+    .progress-footer { display: flex; justify-content: space-between; margin-top: 0.5rem; font-size: 0.8rem; color: rgba(255,255,255,0.6); }
+    .campaign-bullets { margin-top: 2rem; display: flex; flex-direction: column; gap: 0.75rem; }
+    .campaign-bullet { display: flex; gap: 0.75rem; align-items: flex-start; }
+    .campaign-bullet-icon { color: var(--color-accent); font-size: 1.1rem; flex-shrink: 0; }
+    .campaign-bullet-text { font-size: 0.95rem; color: rgba(255,255,255,0.85); line-height: 1.6; }
+    .campaign-image img { width: 100%; border-radius: 8px; display: block; box-shadow: 0 8px 32px rgba(0,0,0,0.3); }
+    .btn { display: inline-block; padding: 0.85rem 2rem; border-radius: 4px; font-weight: 700; font-size: 0.9rem; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; transition: all 0.25s; cursor: pointer; border: 2px solid transparent; }
+    .btn-accent { background: var(--color-accent); color: #fff; border-color: var(--color-accent); }
+    .btn-accent:hover { background: #a85e1f; border-color: #a85e1f; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(196,116,42,0.4); }
+
+    /* EVENT FEATURE */
+    .event-feature { background: var(--color-bg-alt); }
+    .event-feature-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .event-feature-content p { font-size: 1.05rem; color: var(--color-text-light); line-height: 1.8; margin-bottom: 1.25rem; }
+    .event-details-box {
+      background: var(--color-secondary);
+      color: #fff;
+      border-radius: 10px;
+      padding: 2.5rem;
+      margin-top: 1.5rem;
+    }
+    .event-details-box h4 { font-family: 'Playfair Display', serif; font-size: 1.1rem; margin-bottom: 1rem; color: #a8d88a; }
+    .event-detail-item { display: flex; gap: 0.75rem; align-items: flex-start; margin-bottom: 0.75rem; font-size: 0.95rem; }
+    .event-detail-item:last-child { margin-bottom: 0; }
+    .event-feature-img img { width: 100%; border-radius: 10px; display: block; box-shadow: 0 8px 32px rgba(92,61,30,0.2); }
+
+    /* MEMBERSHIP */
+    .membership-section { text-align: center; }
+    .membership-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; margin-top: 3rem; max-width: 800px; margin-left: auto; margin-right: auto; }
+    .membership-card { background: #fff; border: 2px solid var(--color-bg-alt); border-radius: 10px; padding: 2.5rem 2rem; transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s; }
+    .membership-card:hover, .membership-card.featured { border-color: var(--color-accent); box-shadow: 0 8px 28px rgba(196,116,42,0.15); }
+    .membership-card.featured { transform: scale(1.03); }
+    .membership-type { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--color-accent); margin-bottom: 0.5rem; }
+    .membership-price { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 700; color: var(--color-primary); line-height: 1; margin-bottom: 0.25rem; }
+    .membership-price-sub { font-size: 0.85rem; color: var(--color-text-light); margin-bottom: 1.5rem; }
+    .membership-features { list-style: none; text-align: left; display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 2rem; }
+    .membership-features li { font-size: 0.9rem; color: var(--color-text-light); display: flex; gap: 0.5rem; }
+    .membership-features li::before { content: '✓'; color: var(--color-secondary); font-weight: 700; flex-shrink: 0; }
+    .btn-primary { background: var(--color-primary); color: #fff; border-color: var(--color-primary); }
+    .btn-primary:hover { background: #3d2410; border-color: #3d2410; transform: translateY(-2px); }
+
+    /* FADE IN */
+    .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    .fade-in-delay-1 { transition-delay: 0.1s; }
+    .fade-in-delay-2 { transition-delay: 0.2s; }
+    .fade-in-delay-3 { transition-delay: 0.3s; }
+    .fade-in-delay-4 { transition-delay: 0.4s; }
+
+    footer { background: var(--color-footer); color: var(--color-footer-text); padding: 4rem 1.5rem 2rem; }
+    .footer-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+    .footer-brand h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: #fff; margin-bottom: 0.5rem; }
+    .footer-tagline { font-size: 0.85rem; font-style: italic; color: rgba(212,232,194,0.8); margin-bottom: 1.25rem; }
+    .footer-desc { font-size: 0.9rem; color: rgba(212,232,194,0.85); line-height: 1.7; margin-bottom: 1.5rem; }
+    .footer-social { display: flex; gap: 0.75rem; }
+    .footer-social a { width: 38px; height: 38px; background: rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--color-footer-text); text-decoration: none; font-size: 1rem; transition: background 0.2s, color 0.2s; }
+    .footer-social a:hover { background: var(--color-accent); color: #fff; }
+    .footer-col h4 { font-family: 'Playfair Display', serif; font-size: 1rem; color: #fff; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.15); }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .footer-links a { color: rgba(212,232,194,0.85); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-links a:hover { color: #fff; }
+    .footer-contact-item { display: flex; align-items: flex-start; gap: 0.5rem; font-size: 0.9rem; color: rgba(212,232,194,0.85); margin-bottom: 0.5rem; line-height: 1.5; }
+    .footer-bottom { max-width: 1200px; margin: 0 auto; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.15); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; font-size: 0.82rem; color: rgba(212,232,194,0.7); }
+
+    @media (max-width: 900px) {
+      .campaign-grid, .event-feature-inner { grid-template-columns: 1fr; }
+      .programs-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .footer-brand { grid-column: 1 / -1; }
+    }
+    @media (max-width: 700px) {
+      .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: var(--color-nav); padding: 1rem; gap: 0.25rem; box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
+      .nav-links.open { display: flex; }
+      .hamburger { display: flex; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .membership-cards { grid-template-columns: 1fr; }
+      .membership-card.featured { transform: none; }
+    }
+    @media (max-width: 400px) {
+      .programs-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+    <a href="mailto:info@aztalan.us">✉ info@aztalan.us</a>
+    <span class="top-bar-divider">|</span>
+    <a href="https://aztalan.us">🌐 aztalan.us</a>
+  </div>
+
+  <div class="nav-wrapper">
+    <nav>
+      <a href="index.html" class="nav-brand">
+        <div class="nav-logo">A</div>
+        <div class="nav-brand-text">
+          Friends of Aztalan
+          <span>State Park Inc.</span>
+        </div>
+      </a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="mission.html">Mission</a></li>
+        <li><a href="history.html">History</a></li>
+        <li><a href="projects.html" class="active">Programs</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="page-hero-content">
+      <span class="page-hero-label">What We Do</span>
+      <h1>Programs &amp; Projects</h1>
+      <p>From guided tours and Indigenous heritage events to a landmark Visitor Center campaign — here is how the Friends of Aztalan bring the park to life for visitors, students, and the wider community.</p>
+    </div>
+  </div>
+
+  <!-- PROGRAMS GRID -->
+  <section>
+    <div class="container">
+      <p class="section-label fade-in">Our Work</p>
+      <h2 class="section-title fade-in fade-in-delay-1">Programs &amp; Initiatives</h2>
+      <p style="color:var(--color-text-light); font-size:1.05rem; max-width:680px; line-height:1.75; margin-bottom:3rem;" class="fade-in fade-in-delay-2">The Friends group supports a diverse range of programs designed to deepen public understanding of Aztalan, engage the community, and fund the park's long-term future.</p>
+
+      <div class="programs-grid">
+
+        <!-- TOURS -->
+        <article class="program-card fade-in fade-in-delay-1">
+          <div class="program-img-wrap">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/AztalanStateParkSignMounds.jpg" alt="Aztalan State Park sign and platform mounds" class="program-img" loading="lazy">
+            <span class="program-badge">Year-round</span>
+          </div>
+          <div class="program-body">
+            <span class="program-icon">🚶</span>
+            <h3 class="program-title">Group Tours</h3>
+            <p class="program-desc">Guided tours for adults and school groups offer an immersive introduction to Aztalan's archaeological wonders. Expert guides walk visitors through the platform mounds, reconstructed stockade, and the remarkable story of the Mississippian people who built this community. Tours are available for educational groups, community organizations, and general visitors throughout the year.</p>
+            <div class="program-meta">
+              <span class="program-tag">Adults</span>
+              <span class="program-tag">School Groups</span>
+              <span class="program-tag">Educational</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- INDIGENOUS GARDENING DAY -->
+        <article class="program-card fade-in fade-in-delay-2">
+          <div class="program-img-wrap">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/8/8c/Ancient_Aztalan_Village_DSC_0_109.jpg" alt="Ancient Aztalan village area" class="program-img" loading="lazy">
+            <span class="program-badge" style="background: var(--color-secondary);">Annual Event</span>
+          </div>
+          <div class="program-body">
+            <span class="program-icon">🌱</span>
+            <h3 class="program-title">Indigenous Gardening Day</h3>
+            <p class="program-desc">Our signature annual event celebrates the rich agricultural traditions of the people who called Aztalan home. Held each June, Indigenous Gardening Day features hands-on activities, guided interpretive walks, and demonstrations of traditional horticulture. The 2026 event takes place Sunday, June 7 at noon — all are welcome to attend this free, family-friendly celebration of ancient wisdom.</p>
+            <div class="program-meta">
+              <span class="program-tag">Annual</span>
+              <span class="program-tag">June 7, 2026</span>
+              <span class="program-tag">Free Event</span>
+              <span class="program-tag">Family-Friendly</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- ARCHAEOLOGICAL RESEARCH -->
+        <article class="program-card fade-in fade-in-delay-3">
+          <div class="program-img-wrap">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/7/71/Aztalan_platform_mound_steps.jpg" alt="Steps on a platform mound at Aztalan" class="program-img" loading="lazy">
+            <span class="program-badge">Ongoing</span>
+          </div>
+          <div class="program-body">
+            <span class="program-icon">🔬</span>
+            <h3 class="program-title">Archaeological Research Funding</h3>
+            <p class="program-desc">Our understanding of Aztalan continues to evolve with each new excavation and analysis. The Friends group provides financial support for archaeological research at and around the park, helping scholars answer fundamental questions about the site's origins, occupation, and abandonment. This research directly informs the interpretive programs that bring Aztalan's story to life for visitors.</p>
+            <div class="program-meta">
+              <span class="program-tag">Science</span>
+              <span class="program-tag">Research Grants</span>
+              <span class="program-tag">Archaeology</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- VISITOR CENTER -->
+        <article class="program-card fade-in fade-in-delay-1">
+          <div class="program-img-wrap">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/9/98/Clouds_Over_Mounds_At_Aztalan_State_Park_%28139778941%29.jpeg" alt="Clouds over the mounds at Aztalan State Park" class="program-img" loading="lazy">
+            <span class="program-badge" style="background: #8B1C1C;">Capital Campaign</span>
+          </div>
+          <div class="program-body">
+            <span class="program-icon">🏗️</span>
+            <h3 class="program-title">Visitor Center Campaign</h3>
+            <p class="program-desc">Our most ambitious project to date: a new world-class Visitor Center that will transform the visitor experience at Aztalan. The center will feature state-of-the-art interpretive exhibits, accessible facilities, meeting and classroom space, and a true entry point into the park's remarkable story. We have raised approximately $400,000 toward our $1 million goal.</p>
+            <div class="program-meta" style="margin-top:1rem;">
+              <div style="width:100%;">
+                <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:0.5rem;">
+                  <span style="font-family:'Playfair Display',serif; font-size:1.5rem; font-weight:700; color:var(--color-accent);">$400,000</span>
+                  <span style="font-size:0.8rem; color:var(--color-text-light);">Goal: $1,000,000</span>
+                </div>
+                <div style="height:12px; background:var(--color-bg-alt); border-radius:6px; overflow:hidden;">
+                  <div class="progress-bar-fill" style="height:100%; width:0; background:linear-gradient(90deg,var(--color-accent),#e8943d); border-radius:6px; transition:width 1.5s cubic-bezier(0.25,1,0.5,1);"></div>
+                </div>
+                <div style="font-size:0.8rem; color:var(--color-text-light); margin-top:0.35rem;">40% of goal raised</div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- MEMBERSHIP -->
+        <article class="program-card fade-in fade-in-delay-2">
+          <div class="program-img-wrap">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/50/Aztalan_State_Park_stockade.jpg" alt="Wooden stockade at Aztalan State Park" class="program-img" loading="lazy">
+            <span class="program-badge">Join Today</span>
+          </div>
+          <div class="program-body">
+            <span class="program-icon">🎟️</span>
+            <h3 class="program-title">Membership Program</h3>
+            <p class="program-desc">Membership is the backbone of the Friends group — providing reliable annual support for all of our programs. Individual and family memberships are available at affordable rates, and members receive our monthly newsletter, invitations to special events, and the deep satisfaction of knowing they are helping preserve one of Wisconsin's most important cultural treasures for future generations.</p>
+            <div class="program-meta">
+              <span class="program-tag">Individual</span>
+              <span class="program-tag">Family</span>
+              <span class="program-tag">Newsletter</span>
+              <span class="program-tag">Events</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- VOLUNTEER -->
+        <article class="program-card fade-in fade-in-delay-3">
+          <div class="program-img-wrap">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c6/Aztalan_State_Park_part_of_stockade_and_one_mound.jpg" alt="Stockade and mound at Aztalan State Park" class="program-img" loading="lazy">
+            <span class="program-badge" style="background: var(--color-secondary);">Get Involved</span>
+          </div>
+          <div class="program-body">
+            <span class="program-icon">🙌</span>
+            <h3 class="program-title">Volunteer Program</h3>
+            <p class="program-desc">Aztalan's volunteers are essential to the park's daily operation. Our volunteer program mobilizes community members for park maintenance, trail upkeep, visitor services, special events, and more. Volunteering at Aztalan is a hands-on way to connect with Wisconsin's ancient heritage while making a tangible difference. Contact Volunteer Coordinator Kristine Kust to get started.</p>
+            <div class="program-meta">
+              <span class="program-tag">Maintenance</span>
+              <span class="program-tag">Visitor Services</span>
+              <span class="program-tag">Events</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- VISITOR CENTER CAMPAIGN FEATURE -->
+  <section class="campaign-section">
+    <div class="container">
+      <div class="campaign-grid">
+        <div class="campaign-text">
+          <p class="section-label fade-in">Capital Campaign</p>
+          <h2 class="section-title fade-in fade-in-delay-1">Help Us Build the<br>New Visitor Center</h2>
+          <p class="fade-in fade-in-delay-2">Aztalan State Park deserves a Visitor Center worthy of its extraordinary story. We are working toward a $1 million goal to build a world-class interpretive facility that will welcome visitors, educate students, and tell the full depth of this remarkable site's history.</p>
+          <div class="progress-wrap fade-in fade-in-delay-2">
+            <div class="progress-header">
+              <span class="progress-raised">$400,000 Raised</span>
+              <span class="progress-goal">Goal: $1,000,000</span>
+            </div>
+            <div class="progress-bar-bg">
+              <div class="progress-bar-fill" id="campaign-bar"></div>
+            </div>
+            <div class="progress-footer">
+              <span>40% complete</span>
+              <span>$600,000 remaining</span>
+            </div>
+          </div>
+          <div class="campaign-bullets fade-in fade-in-delay-3">
+            <div class="campaign-bullet">
+              <span class="campaign-bullet-icon">★</span>
+              <span class="campaign-bullet-text">State-of-the-art interpretive exhibits on Aztalan's Mississippian culture</span>
+            </div>
+            <div class="campaign-bullet">
+              <span class="campaign-bullet-icon">★</span>
+              <span class="campaign-bullet-text">Accessible restrooms, meeting rooms, and classroom facilities</span>
+            </div>
+            <div class="campaign-bullet">
+              <span class="campaign-bullet-icon">★</span>
+              <span class="campaign-bullet-text">A welcoming entry point and orientation experience for all visitors</span>
+            </div>
+            <div class="campaign-bullet">
+              <span class="campaign-bullet-icon">★</span>
+              <span class="campaign-bullet-text">Space for school programs, community events, and researcher use</span>
+            </div>
+          </div>
+          <div style="margin-top:2rem;" class="fade-in fade-in-delay-4">
+            <a href="contact.html" class="btn btn-accent">Support the Campaign</a>
+          </div>
+        </div>
+        <div class="campaign-image fade-in fade-in-delay-2">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/Aztalan_platform_mound.jpg" alt="Platform mound at Aztalan State Park">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INDIGENOUS GARDENING DAY FEATURE -->
+  <section class="event-feature">
+    <div class="container">
+      <div class="event-feature-inner">
+        <div class="event-feature-content">
+          <p class="section-label fade-in">Annual Event</p>
+          <h2 class="section-title fade-in fade-in-delay-1">Indigenous Gardening Day</h2>
+          <p class="fade-in fade-in-delay-2">Each summer, Friends of Aztalan State Park hosts one of Jefferson County's most unique events: Indigenous Gardening Day. This special gathering honors the deep agricultural knowledge of the Mississippian people who farmed these Wisconsin soils over a thousand years ago.</p>
+          <p class="fade-in fade-in-delay-2">Visitors can experience hands-on demonstrations of traditional horticulture practices, explore the park's gardens of historically significant native plants, and hear stories about how food production shaped Aztalan's society and culture.</p>
+          <div class="event-details-box fade-in fade-in-delay-3">
+            <h4>2026 Event Details</h4>
+            <div class="event-detail-item">
+              <span>📅</span>
+              <span><strong>Date:</strong> Sunday, June 7, 2026</span>
+            </div>
+            <div class="event-detail-item">
+              <span>🕛</span>
+              <span><strong>Time:</strong> Noon (12:00 PM)</span>
+            </div>
+            <div class="event-detail-item">
+              <span>📍</span>
+              <span><strong>Location:</strong> Aztalan State Park, N6200 County Highway Q, Lake Mills, WI</span>
+            </div>
+            <div class="event-detail-item">
+              <span>💵</span>
+              <span><strong>Cost:</strong> Free with standard state park admission</span>
+            </div>
+          </div>
+        </div>
+        <div class="event-feature-img fade-in fade-in-delay-2">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/8/8c/Ancient_Aztalan_Village_DSC_0_109.jpg" alt="Ancient Aztalan village setting" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MEMBERSHIP -->
+  <section class="membership-section">
+    <div class="container">
+      <p class="section-label fade-in">Join the Friends</p>
+      <h2 class="section-title fade-in fade-in-delay-1">Become a Member</h2>
+      <p style="color:var(--color-text-light); font-size:1.05rem; max-width:600px; line-height:1.75; margin:0 auto;" class="fade-in fade-in-delay-2">Your membership directly funds programs, research, and the Visitor Center campaign. Choose the membership level that works best for you.</p>
+      <div class="membership-cards">
+        <div class="membership-card fade-in fade-in-delay-1">
+          <div class="membership-type">Individual</div>
+          <div class="membership-price">Contact Us</div>
+          <div class="membership-price-sub">Annual membership</div>
+          <ul class="membership-features">
+            <li>Monthly newsletter</li>
+            <li>Event invitations</li>
+            <li>Supporting park programs</li>
+            <li>Member recognition</li>
+          </ul>
+          <a href="contact.html" class="btn btn-primary" style="width:100%; text-align:center;">Join Now</a>
+        </div>
+        <div class="membership-card featured fade-in fade-in-delay-2">
+          <div class="membership-type">Family</div>
+          <div class="membership-price">Contact Us</div>
+          <div class="membership-price-sub">Annual membership — all household members</div>
+          <ul class="membership-features">
+            <li>Monthly newsletter</li>
+            <li>Priority event invitations</li>
+            <li>All household members included</li>
+            <li>Supporting park programs</li>
+            <li>Member recognition</li>
+          </ul>
+          <a href="contact.html" class="btn btn-accent" style="width:100%; text-align:center;">Join Now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>Friends of Aztalan State Park Inc.</h3>
+        <p class="footer-tagline">Preserving Wisconsin's Ancient Heritage</p>
+        <p class="footer-desc">A 501(c)(3) nonprofit supporting interpretive, scientific, historical, and educational visitor services at Aztalan State Park — Wisconsin's premier archaeological site and a National Historic Landmark since 1964.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Facebook">f</a>
+          <a href="#" aria-label="Instagram">&#9678;</a>
+          <a href="#" aria-label="Twitter">𝕏</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="mission.html">Mission &amp; Values</a></li>
+          <li><a href="history.html">Park History</a></li>
+          <li><a href="projects.html">Programs</a></li>
+          <li><a href="team.html">Board of Directors</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <div class="footer-contact-item">📍 PO Box 855, Lake Mills, WI 53551</div>
+        <div class="footer-contact-item">📞 <a href="tel:6086582854" style="color:inherit;">608-658-2854</a></div>
+        <div class="footer-contact-item">✉ <a href="mailto:info@aztalan.us" style="color:inherit;">info@aztalan.us</a></div>
+        <div class="footer-contact-item" style="margin-top:0.75rem; font-size:0.8rem; opacity:0.7;">EIN: 04-3732507</div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Friends of Aztalan State Park Inc. All rights reserved.</span>
+      <span>EIN: 04-3732507 · Lake Mills, Wisconsin</span>
+    </div>
+  </footer>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+    hamburger.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('open');
+      hamburger.classList.toggle('open', open);
+      hamburger.setAttribute('aria-expanded', open);
+    });
+    navLinks.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        hamburger.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', false);
+      });
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Animate progress bars when visible
+    const barObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.width = '40%';
+          barObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+    document.querySelectorAll('.progress-bar-fill').forEach(bar => barObserver.observe(bar));
+  </script>
+</body>
+</html>

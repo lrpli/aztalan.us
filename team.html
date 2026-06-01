@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Board of Directors — Friends of Aztalan State Park Inc.</title>
+  <meta name="description" content="Meet the dedicated board of directors who guide Friends of Aztalan State Park Inc. in its mission to preserve and promote Wisconsin's premier archaeological site.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-primary: #5C3D1E;
+      --color-secondary: #2D5016;
+      --color-accent: #C4742A;
+      --color-bg: #FAF6EE;
+      --color-bg-alt: #EDE8DC;
+      --color-text: #2C1A0E;
+      --color-text-light: #6B5240;
+      --color-top-bar: #2C1A0E;
+      --color-top-bar-text: #E8D5B0;
+      --color-nav: #5C3D1E;
+      --color-nav-text: #FAF6EE;
+      --color-footer: #2D5016;
+      --color-footer-text: #D4E8C2;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Lato', sans-serif; background: var(--color-bg); color: var(--color-text); line-height: 1.7; }
+
+    .top-bar { background: var(--color-top-bar); color: var(--color-top-bar-text); font-size: 0.825rem; letter-spacing: 0.03em; padding: 0.45rem 1.5rem; display: flex; justify-content: center; align-items: center; gap: 2rem; flex-wrap: wrap; }
+    .top-bar a { color: var(--color-top-bar-text); text-decoration: none; transition: color 0.2s; }
+    .top-bar a:hover { color: var(--color-accent); }
+    .top-bar-divider { color: #6B5240; }
+    .nav-wrapper { position: sticky; top: 0; z-index: 1000; background: var(--color-nav); box-shadow: 0 2px 12px rgba(0,0,0,0.25); }
+    nav { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; display: flex; align-items: center; justify-content: space-between; min-height: 64px; }
+    .nav-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: var(--color-nav-text); }
+    .nav-logo { width: 42px; height: 42px; background: var(--color-accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: #fff; flex-shrink: 0; }
+    .nav-brand-text { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 600; line-height: 1.25; color: var(--color-nav-text); }
+    .nav-brand-text span { display: block; font-size: 0.7rem; font-family: 'Lato', sans-serif; font-weight: 300; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.8; }
+    .nav-links { display: flex; list-style: none; gap: 0.25rem; align-items: center; }
+    .nav-links a { color: var(--color-nav-text); text-decoration: none; font-size: 0.9rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; padding: 0.5rem 0.75rem; border-radius: 4px; transition: background 0.2s, color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { background: var(--color-accent); color: #fff; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; background: none; border: none; }
+    .hamburger span { display: block; width: 26px; height: 2px; background: var(--color-nav-text); border-radius: 2px; transition: all 0.3s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* PAGE HERO */
+    .page-hero { position: relative; background: var(--color-primary); color: #fff; padding: 6rem 1.5rem; overflow: hidden; }
+    .page-hero-bg { position: absolute; inset: 0; background-image: url('https://upload.wikimedia.org/wikipedia/commons/c/c6/Aztalan_State_Park_part_of_stockade_and_one_mound.jpg'); background-size: cover; background-position: center; opacity: 0.15; }
+    .page-hero-content { position: relative; max-width: 800px; margin: 0 auto; text-align: center; }
+    .page-hero-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--color-accent); margin-bottom: 1rem; display: block; }
+    .page-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 900; line-height: 1.15; margin-bottom: 1.25rem; }
+    .page-hero p { font-size: 1.15rem; opacity: 0.88; line-height: 1.75; font-weight: 300; }
+
+    section { padding: 5rem 1.5rem; }
+    .container { max-width: 1200px; margin: 0 auto; }
+    .section-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-accent); margin-bottom: 0.5rem; }
+    .section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 700; color: var(--color-primary); line-height: 1.2; margin-bottom: 1rem; }
+
+    /* BOARD GRID */
+    .board-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    .board-card {
+      background: #fff;
+      border-radius: 10px;
+      padding: 2.5rem 2rem;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(92,61,30,0.08);
+      transition: transform 0.3s, box-shadow 0.3s;
+      border-bottom: 4px solid transparent;
+    }
+    .board-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 36px rgba(92,61,30,0.15);
+      border-bottom-color: var(--color-accent);
+    }
+    .board-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #fff;
+      margin: 0 auto 1.25rem;
+      flex-shrink: 0;
+    }
+    /* Distinct avatar colors cycling through earth palette */
+    .board-card:nth-child(1) .board-avatar { background: var(--color-primary); }
+    .board-card:nth-child(2) .board-avatar { background: var(--color-secondary); }
+    .board-card:nth-child(3) .board-avatar { background: var(--color-accent); }
+    .board-card:nth-child(4) .board-avatar { background: #7B4F2A; }
+    .board-card:nth-child(5) .board-avatar { background: #3D6B1E; }
+    .board-card:nth-child(6) .board-avatar { background: #A05C1E; }
+    .board-card:nth-child(7) .board-avatar { background: #4A2E10; }
+    .board-card:nth-child(8) .board-avatar { background: #5A7A28; }
+    .board-card:nth-child(9) .board-avatar { background: #8B6035; }
+    .board-card:nth-child(10) .board-avatar { background: #2A4A12; }
+    .board-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--color-primary);
+      margin-bottom: 0.4rem;
+    }
+    .board-role {
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      padding: 0.25rem 0.75rem;
+      background: var(--color-bg-alt);
+      border-radius: 20px;
+      display: inline-block;
+      margin-bottom: 0.5rem;
+    }
+    .board-role-secondary {
+      font-size: 0.8rem;
+      color: var(--color-text-light);
+      font-style: italic;
+      margin-top: 0.25rem;
+    }
+
+    /* OFFICER HIGHLIGHTS */
+    .officers-section { background: var(--color-bg-alt); }
+    .officers-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+    .officer-item {
+      background: var(--color-bg);
+      border-radius: 8px;
+      padding: 1.75rem 1.5rem;
+      border-left: 4px solid var(--color-accent);
+    }
+    .officer-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--color-primary);
+      margin-bottom: 0.3rem;
+    }
+    .officer-title {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      margin-bottom: 0.75rem;
+    }
+    .officer-desc {
+      font-size: 0.88rem;
+      color: var(--color-text-light);
+      line-height: 1.6;
+    }
+
+    /* VOLUNTEER CTA */
+    .volunteer-cta {
+      background: linear-gradient(135deg, var(--color-secondary) 0%, #3d6b1e 100%);
+      color: #fff;
+      padding: 5rem 1.5rem;
+    }
+    .volunteer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .volunteer-text .section-label { color: #a8d88a; }
+    .volunteer-text .section-title { color: #fff; }
+    .volunteer-text p { font-size: 1.05rem; color: rgba(255,255,255,0.88); line-height: 1.8; margin-bottom: 1.25rem; }
+    .volunteer-benefits {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+    .volunteer-benefit {
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+    }
+    .volunteer-benefit-icon { font-size: 1.25rem; flex-shrink: 0; }
+    .volunteer-benefit-text { font-size: 0.95rem; color: rgba(255,255,255,0.88); line-height: 1.6; }
+    .volunteer-benefit-text strong { color: #fff; }
+    .volunteer-image img { width: 100%; border-radius: 10px; display: block; box-shadow: 0 8px 32px rgba(0,0,0,0.25); }
+    .btn { display: inline-block; padding: 0.85rem 2rem; border-radius: 4px; font-weight: 700; font-size: 0.9rem; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: none; transition: all 0.25s; cursor: pointer; border: 2px solid transparent; }
+    .btn-white { background: #fff; color: var(--color-secondary); border-color: #fff; }
+    .btn-white:hover { background: var(--color-accent); color: #fff; border-color: var(--color-accent); transform: translateY(-2px); }
+    .btn-outline-white { background: transparent; color: #fff; border-color: rgba(255,255,255,0.7); margin-left: 1rem; }
+    .btn-outline-white:hover { background: rgba(255,255,255,0.15); border-color: #fff; transform: translateY(-2px); }
+
+    /* FADE IN */
+    .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    .fade-in-delay-1 { transition-delay: 0.1s; }
+    .fade-in-delay-2 { transition-delay: 0.2s; }
+    .fade-in-delay-3 { transition-delay: 0.3s; }
+
+    footer { background: var(--color-footer); color: var(--color-footer-text); padding: 4rem 1.5rem 2rem; }
+    .footer-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+    .footer-brand h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: #fff; margin-bottom: 0.5rem; }
+    .footer-tagline { font-size: 0.85rem; font-style: italic; color: rgba(212,232,194,0.8); margin-bottom: 1.25rem; }
+    .footer-desc { font-size: 0.9rem; color: rgba(212,232,194,0.85); line-height: 1.7; margin-bottom: 1.5rem; }
+    .footer-social { display: flex; gap: 0.75rem; }
+    .footer-social a { width: 38px; height: 38px; background: rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--color-footer-text); text-decoration: none; font-size: 1rem; transition: background 0.2s, color 0.2s; }
+    .footer-social a:hover { background: var(--color-accent); color: #fff; }
+    .footer-col h4 { font-family: 'Playfair Display', serif; font-size: 1rem; color: #fff; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.15); }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .footer-links a { color: rgba(212,232,194,0.85); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-links a:hover { color: #fff; }
+    .footer-contact-item { display: flex; align-items: flex-start; gap: 0.5rem; font-size: 0.9rem; color: rgba(212,232,194,0.85); margin-bottom: 0.5rem; line-height: 1.5; }
+    .footer-bottom { max-width: 1200px; margin: 0 auto; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.15); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; font-size: 0.82rem; color: rgba(212,232,194,0.7); }
+
+    @media (max-width: 900px) {
+      .volunteer-inner { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .footer-brand { grid-column: 1 / -1; }
+    }
+    @media (max-width: 700px) {
+      .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: var(--color-nav); padding: 1rem; gap: 0.25rem; box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
+      .nav-links.open { display: flex; }
+      .hamburger { display: flex; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .board-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+    <a href="mailto:info@aztalan.us">✉ info@aztalan.us</a>
+    <span class="top-bar-divider">|</span>
+    <a href="https://aztalan.us">🌐 aztalan.us</a>
+  </div>
+
+  <div class="nav-wrapper">
+    <nav>
+      <a href="index.html" class="nav-brand">
+        <div class="nav-logo">A</div>
+        <div class="nav-brand-text">
+          Friends of Aztalan
+          <span>State Park Inc.</span>
+        </div>
+      </a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="mission.html">Mission</a></li>
+        <li><a href="history.html">History</a></li>
+        <li><a href="projects.html">Programs</a></li>
+        <li><a href="team.html" class="active">Team</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="page-hero-content">
+      <span class="page-hero-label">The People Behind the Mission</span>
+      <h1>Board of Directors</h1>
+      <p>Friends of Aztalan State Park is led by a dedicated volunteer board of directors drawn from the local community — people who share a deep passion for Wisconsin's ancient heritage and its preservation for future generations.</p>
+    </div>
+  </div>
+
+  <!-- BOARD GRID -->
+  <section>
+    <div class="container">
+      <p class="section-label fade-in">Our Leadership</p>
+      <h2 class="section-title fade-in fade-in-delay-1">2025 Board of Directors</h2>
+      <p style="color:var(--color-text-light); font-size:1.05rem; max-width:680px; line-height:1.75;" class="fade-in fade-in-delay-2">Our volunteer board guides the strategic direction of the organization, oversees programs and finances, and works hand-in-hand with Wisconsin DNR staff to support Aztalan State Park.</p>
+
+      <div class="board-grid">
+
+        <div class="board-card fade-in fade-in-delay-1">
+          <div class="board-avatar">DS</div>
+          <div class="board-name">Dan Seurer</div>
+          <div class="board-role">President</div>
+        </div>
+
+        <div class="board-card fade-in fade-in-delay-2">
+          <div class="board-avatar">KK</div>
+          <div class="board-name">Kristine Kust</div>
+          <div class="board-role">Vice President</div>
+          <div class="board-role-secondary">Volunteer Coordinator</div>
+        </div>
+
+        <div class="board-card fade-in fade-in-delay-3">
+          <div class="board-avatar">KR</div>
+          <div class="board-name">Kris Reed</div>
+          <div class="board-role">Secretary</div>
+        </div>
+
+        <div class="board-card fade-in fade-in-delay-1">
+          <div class="board-avatar">BP</div>
+          <div class="board-name">Bob Persons</div>
+          <div class="board-role">Treasurer</div>
+        </div>
+
+        <div class="board-card fade-in fade-in-delay-2">
+          <div class="board-avatar">RR</div>
+          <div class="board-name">Randy Radtke</div>
+          <div class="board-role">Parliamentarian</div>
+        </div>
+
+        <div class="board-card fade-in fade-in-delay-3">
+          <div class="board-avatar">JM</div>
+          <div class="board-name">Julia Meyers</div>
+          <div class="board-role">Newsletter Editor</div>
+        </div>
+
+        <div class="board-card fade-in fade-in-delay-1">
+          <div class="board-avatar">BB</div>
+          <div class="board-name">Bob Birmingham</div>
+          <div class="board-role">Ex-Officio</div>
+          <div class="board-role-secondary">Executive Director</div>
+        </div>
+
+        <div class="board-card fade-in fade-in-delay-2">
+          <div class="board-avatar">NC</div>
+          <div class="board-name">Nona Christiansen</div>
+          <div class="board-role">Director</div>
+        </div>
+
+        <div class="board-card fade-in fade-in-delay-3">
+          <div class="board-avatar">WH</div>
+          <div class="board-name">Wayne Hasel</div>
+          <div class="board-role">Director</div>
+        </div>
+
+        <div class="board-card fade-in fade-in-delay-1">
+          <div class="board-avatar">WB</div>
+          <div class="board-name">Bill Bursaw</div>
+          <div class="board-role">Director</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- OFFICER HIGHLIGHTS -->
+  <section class="officers-section">
+    <div class="container">
+      <p class="section-label fade-in">Officer Roles</p>
+      <h2 class="section-title fade-in fade-in-delay-1">Leadership Responsibilities</h2>
+      <p style="color:var(--color-text-light); font-size:1.05rem; max-width:680px; line-height:1.75;" class="fade-in fade-in-delay-2">Our elected officers guide the day-to-day operations of the Friends group, from financial oversight to community engagement and program coordination.</p>
+      <div class="officers-grid">
+        <div class="officer-item fade-in fade-in-delay-1">
+          <div class="officer-name">Dan Seurer</div>
+          <div class="officer-title">President</div>
+          <div class="officer-desc">Leads board meetings, guides strategic direction, and serves as the primary representative of the Friends group in community and governmental relationships.</div>
+        </div>
+        <div class="officer-item fade-in fade-in-delay-2">
+          <div class="officer-name">Kristine Kust</div>
+          <div class="officer-title">Vice President &amp; Volunteer Coordinator</div>
+          <div class="officer-desc">Supports the president, leads in their absence, and coordinates the volunteer program — recruiting, scheduling, and recognizing the volunteers who keep Aztalan thriving.</div>
+        </div>
+        <div class="officer-item fade-in fade-in-delay-3">
+          <div class="officer-name">Kris Reed</div>
+          <div class="officer-title">Secretary</div>
+          <div class="officer-desc">Maintains organizational records, records meeting minutes, manages correspondence, and ensures the board remains informed and well-organized.</div>
+        </div>
+        <div class="officer-item fade-in fade-in-delay-1">
+          <div class="officer-name">Bob Persons</div>
+          <div class="officer-title">Treasurer</div>
+          <div class="officer-desc">Oversees the organization's finances, manages accounts, prepares financial reports, and ensures proper stewardship of donor and membership funds.</div>
+        </div>
+        <div class="officer-item fade-in fade-in-delay-2">
+          <div class="officer-name">Randy Radtke</div>
+          <div class="officer-title">Parliamentarian</div>
+          <div class="officer-desc">Ensures board meetings follow proper procedure and parliamentary rules, advising on matters of governance and organizational bylaws.</div>
+        </div>
+        <div class="officer-item fade-in fade-in-delay-3">
+          <div class="officer-name">Julia Meyers</div>
+          <div class="officer-title">Newsletter Editor</div>
+          <div class="officer-desc">Produces the Friends monthly newsletter — gathering stories, writing content, and keeping members informed about events, programs, and park news.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VOLUNTEER CTA -->
+  <div class="volunteer-cta">
+    <div class="volunteer-inner">
+      <div class="volunteer-text">
+        <p class="section-label fade-in">Join Our Team</p>
+        <h2 class="section-title fade-in fade-in-delay-1">Volunteer at Aztalan</h2>
+        <p class="fade-in fade-in-delay-2">Aztalan State Park couldn't function without the dedicated volunteers who give their time, skills, and energy to this special place. Whether you're interested in trail maintenance, visitor services, special events, or something else entirely — there's a role for you.</p>
+        <div class="volunteer-benefits fade-in fade-in-delay-2">
+          <div class="volunteer-benefit">
+            <span class="volunteer-benefit-icon">🌿</span>
+            <div class="volunteer-benefit-text"><strong>Park Maintenance</strong> — Help keep the mounds, trails, and grounds in excellent condition for visitors year-round.</div>
+          </div>
+          <div class="volunteer-benefit">
+            <span class="volunteer-benefit-icon">🚶</span>
+            <div class="volunteer-benefit-text"><strong>Visitor Services</strong> — Greet and guide visitors, answer questions, and help people connect with Aztalan's remarkable story.</div>
+          </div>
+          <div class="volunteer-benefit">
+            <span class="volunteer-benefit-icon">🎉</span>
+            <div class="volunteer-benefit-text"><strong>Special Events</strong> — Help coordinate and staff events like Indigenous Gardening Day and other seasonal programs.</div>
+          </div>
+          <div class="volunteer-benefit">
+            <span class="volunteer-benefit-icon">📋</span>
+            <div class="volunteer-benefit-text"><strong>Administrative Support</strong> — Assist with membership, communications, and organizational tasks that keep the Friends group running smoothly.</div>
+          </div>
+        </div>
+        <p style="font-size:0.9rem; color:rgba(255,255,255,0.75);" class="fade-in fade-in-delay-3">Contact Volunteer Coordinator <strong style="color:#fff;">Kristine Kust</strong> to learn about current volunteer opportunities.</p>
+        <div style="margin-top:2rem;" class="fade-in fade-in-delay-3">
+          <a href="contact.html" class="btn btn-white">Get Involved</a>
+          <a href="contact.html" class="btn btn-outline-white">Contact Us</a>
+        </div>
+      </div>
+      <div class="volunteer-image fade-in fade-in-delay-2">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/c/c6/Aztalan_State_Park_part_of_stockade_and_one_mound.jpg" alt="The reconstructed stockade and a platform mound at Aztalan State Park" loading="lazy">
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>Friends of Aztalan State Park Inc.</h3>
+        <p class="footer-tagline">Preserving Wisconsin's Ancient Heritage</p>
+        <p class="footer-desc">A 501(c)(3) nonprofit supporting interpretive, scientific, historical, and educational visitor services at Aztalan State Park — Wisconsin's premier archaeological site and a National Historic Landmark since 1964.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Facebook">f</a>
+          <a href="#" aria-label="Instagram">&#9678;</a>
+          <a href="#" aria-label="Twitter">𝕏</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="mission.html">Mission &amp; Values</a></li>
+          <li><a href="history.html">Park History</a></li>
+          <li><a href="projects.html">Programs</a></li>
+          <li><a href="team.html">Board of Directors</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <div class="footer-contact-item">📍 PO Box 855, Lake Mills, WI 53551</div>
+        <div class="footer-contact-item">📞 <a href="tel:6086582854" style="color:inherit;">608-658-2854</a></div>
+        <div class="footer-contact-item">✉ <a href="mailto:info@aztalan.us" style="color:inherit;">info@aztalan.us</a></div>
+        <div class="footer-contact-item" style="margin-top:0.75rem; font-size:0.8rem; opacity:0.7;">EIN: 04-3732507</div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Friends of Aztalan State Park Inc. All rights reserved.</span>
+      <span>EIN: 04-3732507 · Lake Mills, Wisconsin</span>
+    </div>
+  </footer>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+    hamburger.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('open');
+      hamburger.classList.toggle('open', open);
+      hamburger.setAttribute('aria-expanded', open);
+    });
+    navLinks.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        hamburger.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', false);
+      });
+    });
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

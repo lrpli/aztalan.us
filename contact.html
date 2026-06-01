@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact &amp; Visit — Friends of Aztalan State Park Inc.</title>
+  <meta name="description" content="Contact Friends of Aztalan State Park Inc., get directions to the park, learn about park hours, and join as a member. PO Box 855, Lake Mills, WI 53551.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-primary: #5C3D1E;
+      --color-secondary: #2D5016;
+      --color-accent: #C4742A;
+      --color-bg: #FAF6EE;
+      --color-bg-alt: #EDE8DC;
+      --color-text: #2C1A0E;
+      --color-text-light: #6B5240;
+      --color-top-bar: #2C1A0E;
+      --color-top-bar-text: #E8D5B0;
+      --color-nav: #5C3D1E;
+      --color-nav-text: #FAF6EE;
+      --color-footer: #2D5016;
+      --color-footer-text: #D4E8C2;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Lato', sans-serif; background: var(--color-bg); color: var(--color-text); line-height: 1.7; }
+
+    .top-bar { background: var(--color-top-bar); color: var(--color-top-bar-text); font-size: 0.825rem; letter-spacing: 0.03em; padding: 0.45rem 1.5rem; display: flex; justify-content: center; align-items: center; gap: 2rem; flex-wrap: wrap; }
+    .top-bar a { color: var(--color-top-bar-text); text-decoration: none; transition: color 0.2s; }
+    .top-bar a:hover { color: var(--color-accent); }
+    .top-bar-divider { color: #6B5240; }
+    .nav-wrapper { position: sticky; top: 0; z-index: 1000; background: var(--color-nav); box-shadow: 0 2px 12px rgba(0,0,0,0.25); }
+    nav { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; display: flex; align-items: center; justify-content: space-between; min-height: 64px; }
+    .nav-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; color: var(--color-nav-text); }
+    .nav-logo { width: 42px; height: 42px; background: var(--color-accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: #fff; flex-shrink: 0; }
+    .nav-brand-text { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 600; line-height: 1.25; color: var(--color-nav-text); }
+    .nav-brand-text span { display: block; font-size: 0.7rem; font-family: 'Lato', sans-serif; font-weight: 300; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.8; }
+    .nav-links { display: flex; list-style: none; gap: 0.25rem; align-items: center; }
+    .nav-links a { color: var(--color-nav-text); text-decoration: none; font-size: 0.9rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; padding: 0.5rem 0.75rem; border-radius: 4px; transition: background 0.2s, color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { background: var(--color-accent); color: #fff; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 8px; background: none; border: none; }
+    .hamburger span { display: block; width: 26px; height: 2px; background: var(--color-nav-text); border-radius: 2px; transition: all 0.3s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    /* PAGE HERO */
+    .page-hero { position: relative; background: var(--color-primary); color: #fff; padding: 6rem 1.5rem; overflow: hidden; }
+    .page-hero-bg { position: absolute; inset: 0; background-image: url('https://upload.wikimedia.org/wikipedia/commons/9/91/Aztalan_State_Park_Entrance_Sign.jpg'); background-size: cover; background-position: center; opacity: 0.18; }
+    .page-hero-content { position: relative; max-width: 800px; margin: 0 auto; text-align: center; }
+    .page-hero-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--color-accent); margin-bottom: 1rem; display: block; }
+    .page-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 900; line-height: 1.15; margin-bottom: 1.25rem; }
+    .page-hero p { font-size: 1.15rem; opacity: 0.88; line-height: 1.75; font-weight: 300; }
+
+    section { padding: 5rem 1.5rem; }
+    .container { max-width: 1200px; margin: 0 auto; }
+    .section-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-accent); margin-bottom: 0.5rem; }
+    .section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 700; color: var(--color-primary); line-height: 1.2; margin-bottom: 1rem; }
+
+    /* CONTACT + FORM GRID */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    /* CONTACT DETAILS */
+    .contact-details { }
+    .contact-card {
+      background: var(--color-primary);
+      color: #fff;
+      border-radius: 10px;
+      padding: 2.5rem;
+      margin-bottom: 2rem;
+    }
+    .contact-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: #fff;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+    }
+    .contact-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      margin-bottom: 1.25rem;
+    }
+    .contact-item:last-child { margin-bottom: 0; }
+    .contact-item-icon {
+      width: 40px;
+      height: 40px;
+      background: rgba(255,255,255,0.12);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .contact-item-body { }
+    .contact-item-label { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-accent); margin-bottom: 0.2rem; }
+    .contact-item-value { font-size: 0.95rem; color: rgba(255,255,255,0.9); line-height: 1.5; }
+    .contact-item-value a { color: rgba(255,255,255,0.9); text-decoration: none; transition: color 0.2s; }
+    .contact-item-value a:hover { color: var(--color-accent); }
+
+    /* DIRECTIONS */
+    .directions-card {
+      background: var(--color-bg-alt);
+      border-radius: 10px;
+      padding: 2rem;
+      border-left: 4px solid var(--color-secondary);
+    }
+    .directions-card h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      color: var(--color-primary);
+      margin-bottom: 1rem;
+    }
+    .directions-card p { font-size: 0.92rem; color: var(--color-text-light); line-height: 1.7; margin-bottom: 0.75rem; }
+    .directions-card p:last-child { margin-bottom: 0; }
+    .directions-card strong { color: var(--color-primary); }
+
+    /* CONTACT FORM */
+    .contact-form-wrap {
+      background: #fff;
+      border-radius: 10px;
+      padding: 2.5rem;
+      box-shadow: 0 4px 24px rgba(92,61,30,0.1);
+    }
+    .contact-form-wrap h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: var(--color-primary);
+      margin-bottom: 0.5rem;
+    }
+    .contact-form-wrap p {
+      font-size: 0.95rem;
+      color: var(--color-text-light);
+      margin-bottom: 2rem;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+    .form-group { margin-bottom: 1.25rem; }
+    .form-group label { display: block; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-primary); margin-bottom: 0.4rem; }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      border: 2px solid var(--color-bg-alt);
+      border-radius: 6px;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.95rem;
+      color: var(--color-text);
+      background: var(--color-bg);
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+      -webkit-appearance: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--color-accent);
+      box-shadow: 0 0 0 3px rgba(196,116,42,0.15);
+    }
+    .form-group textarea { resize: vertical; min-height: 140px; }
+    .form-submit { margin-top: 0.5rem; }
+    .btn-submit {
+      background: var(--color-accent);
+      color: #fff;
+      border: none;
+      padding: 1rem 2.5rem;
+      border-radius: 4px;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+      width: 100%;
+    }
+    .btn-submit:hover { background: #a85e1f; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(196,116,42,0.35); }
+    .form-success {
+      display: none;
+      background: #e8f5e1;
+      border: 2px solid var(--color-secondary);
+      border-radius: 8px;
+      padding: 1.5rem;
+      text-align: center;
+      color: var(--color-secondary);
+      font-weight: 700;
+      margin-top: 1rem;
+    }
+
+    /* MAP PLACEHOLDER */
+    .map-section { background: var(--color-bg-alt); padding: 0; }
+    .map-placeholder {
+      width: 100%;
+      height: 380px;
+      background: linear-gradient(135deg, #d4c9b5 0%, #c5b89f 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      color: var(--color-text-light);
+      position: relative;
+      overflow: hidden;
+    }
+    .map-placeholder::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Aztalan_platform_mound_panorama.jpg/1280px-Aztalan_platform_mound_panorama.jpg');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.2;
+    }
+    .map-placeholder-inner {
+      position: relative;
+      text-align: center;
+      background: rgba(255,255,255,0.9);
+      border-radius: 10px;
+      padding: 2rem 3rem;
+      box-shadow: 0 4px 24px rgba(92,61,30,0.15);
+    }
+    .map-pin { font-size: 3rem; display: block; margin-bottom: 0.5rem; }
+    .map-address { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--color-primary); font-weight: 700; margin-bottom: 0.4rem; }
+    .map-sub { font-size: 0.9rem; color: var(--color-text-light); margin-bottom: 1.25rem; }
+    .map-link {
+      display: inline-block;
+      background: var(--color-accent);
+      color: #fff;
+      padding: 0.65rem 1.5rem;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .map-link:hover { background: #a85e1f; transform: translateY(-2px); }
+
+    /* PARK HOURS */
+    .hours-section { }
+    .hours-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; margin-top: 2.5rem; }
+    .hours-card { background: #fff; border-radius: 10px; padding: 2rem; box-shadow: 0 4px 16px rgba(92,61,30,0.08); }
+    .hours-card-icon { font-size: 2rem; margin-bottom: 0.75rem; display: block; }
+    .hours-card h4 { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--color-primary); margin-bottom: 1rem; }
+    .hours-row { display: flex; justify-content: space-between; align-items: center; padding: 0.5rem 0; border-bottom: 1px solid var(--color-bg-alt); font-size: 0.9rem; }
+    .hours-row:last-child { border-bottom: none; }
+    .hours-day { color: var(--color-text-light); }
+    .hours-time { font-weight: 700; color: var(--color-primary); }
+    .hours-note { font-size: 0.82rem; color: var(--color-text-light); font-style: italic; margin-top: 0.75rem; line-height: 1.5; }
+
+    /* MEMBERSHIP SECTION */
+    .membership-section {
+      background: var(--color-secondary);
+      color: #fff;
+      padding: 5rem 1.5rem;
+    }
+    .membership-inner { max-width: 1200px; margin: 0 auto; }
+    .membership-section .section-label { color: #a8d88a; }
+    .membership-section .section-title { color: #fff; }
+    .membership-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-top: 2rem; }
+    .membership-benefits { display: flex; flex-direction: column; gap: 1rem; margin-top: 1.5rem; }
+    .membership-benefit { display: flex; gap: 0.75rem; align-items: flex-start; }
+    .membership-benefit-check { color: #a8d88a; font-size: 1.1rem; flex-shrink: 0; font-weight: 700; }
+    .membership-benefit-text { font-size: 0.95rem; color: rgba(255,255,255,0.88); line-height: 1.6; }
+    .membership-form-box { background: rgba(255,255,255,0.1); border: 2px solid rgba(255,255,255,0.2); border-radius: 10px; padding: 2.5rem; }
+    .membership-form-box h4 { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: #fff; margin-bottom: 1.5rem; }
+    .membership-form-box .form-group label { color: rgba(255,255,255,0.8); }
+    .membership-form-box input,
+    .membership-form-box select {
+      background: rgba(255,255,255,0.12);
+      border-color: rgba(255,255,255,0.25);
+      color: #fff;
+    }
+    .membership-form-box input::placeholder { color: rgba(255,255,255,0.5); }
+    .membership-form-box input:focus,
+    .membership-form-box select:focus { border-color: #a8d88a; box-shadow: 0 0 0 3px rgba(168,216,138,0.2); }
+    .membership-form-box select option { background: var(--color-secondary); color: #fff; }
+    .btn-green { background: #a8d88a; color: var(--color-secondary); border: none; padding: 1rem 2.5rem; border-radius: 4px; font-family: 'Lato', sans-serif; font-size: 0.9rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; transition: all 0.2s; width: 100%; }
+    .btn-green:hover { background: #8ec46e; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.2); }
+
+    /* FADE IN */
+    .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    .fade-in-delay-1 { transition-delay: 0.1s; }
+    .fade-in-delay-2 { transition-delay: 0.2s; }
+    .fade-in-delay-3 { transition-delay: 0.3s; }
+
+    footer { background: var(--color-footer); color: var(--color-footer-text); padding: 4rem 1.5rem 2rem; }
+    .footer-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+    .footer-brand h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: #fff; margin-bottom: 0.5rem; }
+    .footer-tagline { font-size: 0.85rem; font-style: italic; color: rgba(212,232,194,0.8); margin-bottom: 1.25rem; }
+    .footer-desc { font-size: 0.9rem; color: rgba(212,232,194,0.85); line-height: 1.7; margin-bottom: 1.5rem; }
+    .footer-social { display: flex; gap: 0.75rem; }
+    .footer-social a { width: 38px; height: 38px; background: rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--color-footer-text); text-decoration: none; font-size: 1rem; transition: background 0.2s, color 0.2s; }
+    .footer-social a:hover { background: var(--color-accent); color: #fff; }
+    .footer-col h4 { font-family: 'Playfair Display', serif; font-size: 1rem; color: #fff; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.15); }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .footer-links a { color: rgba(212,232,194,0.85); text-decoration: none; font-size: 0.9rem; transition: color 0.2s; }
+    .footer-links a:hover { color: #fff; }
+    .footer-contact-item { display: flex; align-items: flex-start; gap: 0.5rem; font-size: 0.9rem; color: rgba(212,232,194,0.85); margin-bottom: 0.5rem; line-height: 1.5; }
+    .footer-bottom { max-width: 1200px; margin: 0 auto; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.15); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; font-size: 0.82rem; color: rgba(212,232,194,0.7); }
+
+    @media (max-width: 900px) {
+      .contact-grid { grid-template-columns: 1fr; }
+      .membership-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .footer-brand { grid-column: 1 / -1; }
+    }
+    @media (max-width: 700px) {
+      .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: var(--color-nav); padding: 1rem; gap: 0.25rem; box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
+      .nav-links.open { display: flex; }
+      .hamburger { display: flex; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+    <a href="mailto:info@aztalan.us">✉ info@aztalan.us</a>
+    <span class="top-bar-divider">|</span>
+    <a href="https://aztalan.us">🌐 aztalan.us</a>
+  </div>
+
+  <div class="nav-wrapper">
+    <nav>
+      <a href="index.html" class="nav-brand">
+        <div class="nav-logo">A</div>
+        <div class="nav-brand-text">
+          Friends of Aztalan
+          <span>State Park Inc.</span>
+        </div>
+      </a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="mission.html">Mission</a></li>
+        <li><a href="history.html">History</a></li>
+        <li><a href="projects.html">Programs</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="page-hero-bg"></div>
+    <div class="page-hero-content">
+      <span class="page-hero-label">We'd Love to Hear From You</span>
+      <h1>Contact &amp; Visit</h1>
+      <p>Reach out with questions about the park, membership, volunteering, group tours, or the Visitor Center campaign. Plan your visit to one of Wisconsin's most extraordinary places.</p>
+    </div>
+  </div>
+
+  <!-- CONTACT + FORM -->
+  <section>
+    <div class="container">
+      <div class="contact-grid">
+
+        <!-- DETAILS COLUMN -->
+        <div>
+          <p class="section-label fade-in">Get in Touch</p>
+          <h2 class="section-title fade-in fade-in-delay-1" style="font-size:clamp(1.5rem,3vw,2rem); margin-bottom:1.5rem;">Contact Information</h2>
+          <div class="contact-card fade-in fade-in-delay-2">
+            <h3>Friends of Aztalan State Park Inc.</h3>
+            <div class="contact-item">
+              <div class="contact-item-icon">📍</div>
+              <div class="contact-item-body">
+                <div class="contact-item-label">Mailing Address</div>
+                <div class="contact-item-value">PO Box 855<br>Lake Mills, WI 53551</div>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-item-icon">📞</div>
+              <div class="contact-item-body">
+                <div class="contact-item-label">Phone</div>
+                <div class="contact-item-value"><a href="tel:6086582854">608-658-2854</a></div>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-item-icon">✉</div>
+              <div class="contact-item-body">
+                <div class="contact-item-label">Email</div>
+                <div class="contact-item-value"><a href="mailto:info@aztalan.us">info@aztalan.us</a></div>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-item-icon">🌐</div>
+              <div class="contact-item-body">
+                <div class="contact-item-label">Website</div>
+                <div class="contact-item-value"><a href="https://aztalan.us">aztalan.us</a></div>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-item-icon">🏛️</div>
+              <div class="contact-item-body">
+                <div class="contact-item-label">Tax ID (EIN)</div>
+                <div class="contact-item-value">04-3732507</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="directions-card fade-in fade-in-delay-3">
+            <h4>📌 Directions to the Park</h4>
+            <p><strong>Physical address:</strong> N6200 County Highway Q, Lake Mills, WI 53551</p>
+            <p>Aztalan State Park is located approximately 3 miles east of Lake Mills, Wisconsin, off County Highway Q. From Interstate 94, take Exit 267 toward Lake Mills, then follow County Q east approximately 1.5 miles to the park entrance on the right.</p>
+            <p>The park is approximately 40 miles east of Madison and 60 miles west of Milwaukee — accessible from both the Madison and Milwaukee metro areas.</p>
+          </div>
+        </div>
+
+        <!-- FORM COLUMN -->
+        <div class="contact-form-wrap fade-in fade-in-delay-1">
+          <h3>Send Us a Message</h3>
+          <p>Questions about tours, membership, volunteering, or the park? We'll get back to you promptly.</p>
+          <form id="contact-form" novalidate>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="fname">First Name <span aria-hidden="true" style="color:var(--color-accent);">*</span></label>
+                <input type="text" id="fname" name="fname" placeholder="Jane" required autocomplete="given-name">
+              </div>
+              <div class="form-group">
+                <label for="lname">Last Name <span aria-hidden="true" style="color:var(--color-accent);">*</span></label>
+                <input type="text" id="lname" name="lname" placeholder="Smith" required autocomplete="family-name">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address <span aria-hidden="true" style="color:var(--color-accent);">*</span></label>
+              <input type="email" id="email" name="email" placeholder="jane@example.com" required autocomplete="email">
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone (optional)</label>
+              <input type="tel" id="phone" name="phone" placeholder="608-555-0100" autocomplete="tel">
+            </div>
+            <div class="form-group">
+              <label for="subject">Subject <span aria-hidden="true" style="color:var(--color-accent);">*</span></label>
+              <select id="subject" name="subject" required>
+                <option value="" disabled selected>Select a topic…</option>
+                <option value="membership">Membership</option>
+                <option value="volunteer">Volunteering</option>
+                <option value="tours">Group Tours</option>
+                <option value="donation">Donation / Visitor Center Campaign</option>
+                <option value="gardening">Indigenous Gardening Day</option>
+                <option value="newsletter">Newsletter</option>
+                <option value="general">General Inquiry</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">Message <span aria-hidden="true" style="color:var(--color-accent);">*</span></label>
+              <textarea id="message" name="message" placeholder="Tell us how we can help…" required></textarea>
+            </div>
+            <div class="form-submit">
+              <button type="submit" class="btn-submit">Send Message</button>
+            </div>
+            <div class="form-success" id="form-success" role="alert">
+              ✓ Thank you! Your message has been received. We'll be in touch soon.
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- MAP -->
+  <div class="map-section">
+    <div class="map-placeholder" role="img" aria-label="Map placeholder showing location of Aztalan State Park">
+      <div class="map-placeholder-inner">
+        <span class="map-pin">📍</span>
+        <div class="map-address">Aztalan State Park</div>
+        <div class="map-sub">N6200 County Highway Q, Lake Mills, WI 53551</div>
+        <a href="https://maps.google.com/?q=Aztalan+State+Park,+N6200+County+Highway+Q,+Lake+Mills,+WI+53551" target="_blank" rel="noopener noreferrer" class="map-link">Open in Google Maps</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- PARK HOURS -->
+  <section class="hours-section">
+    <div class="container">
+      <p class="section-label fade-in">Plan Your Visit</p>
+      <h2 class="section-title fade-in fade-in-delay-1">Park Hours &amp; Visitor Info</h2>
+      <p style="color:var(--color-text-light); font-size:1.05rem; max-width:680px; line-height:1.75; margin-bottom:2rem;" class="fade-in fade-in-delay-2">Aztalan State Park is open to visitors year-round. Hours vary by season. A Wisconsin State Park vehicle admission sticker is required. Please check the Wisconsin DNR website for the most current information before your visit.</p>
+      <div class="hours-grid">
+        <div class="hours-card fade-in fade-in-delay-1">
+          <span class="hours-card-icon">🌞</span>
+          <h4>Park Hours (General)</h4>
+          <div class="hours-row">
+            <span class="hours-day">Daily (Spring/Summer/Fall)</span>
+            <span class="hours-time">6 AM – 11 PM</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-day">Winter (Dec – Feb)</span>
+            <span class="hours-time">6 AM – 8 PM</span>
+          </div>
+          <p class="hours-note">Hours subject to change. Always check Wisconsin DNR for current park hours and any closures.</p>
+        </div>
+        <div class="hours-card fade-in fade-in-delay-2">
+          <span class="hours-card-icon">🚗</span>
+          <h4>Admission</h4>
+          <div class="hours-row">
+            <span class="hours-day">Wisconsin Residents (Annual)</span>
+            <span class="hours-time">State Park Sticker</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-day">Non-Residents</span>
+            <span class="hours-time">State Park Sticker</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-day">Daily Pass Available</span>
+            <span class="hours-time">At Entrance</span>
+          </div>
+          <p class="hours-note">A valid Wisconsin State Park vehicle admission sticker is required. Purchase at the park or through the Wisconsin DNR website.</p>
+        </div>
+        <div class="hours-card fade-in fade-in-delay-3">
+          <span class="hours-card-icon">🌡️</span>
+          <h4>Best Times to Visit</h4>
+          <div class="hours-row">
+            <span class="hours-day">Spring (Apr–May)</span>
+            <span class="hours-time">Wildflowers, quiet trails</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-day">Summer (Jun–Aug)</span>
+            <span class="hours-time">Events &amp; full programming</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-day">Fall (Sep–Nov)</span>
+            <span class="hours-time">Foliage, dramatic skies</span>
+          </div>
+          <p class="hours-note">The park is beautiful in every season. Summer offers the most programming; fall offers stunning views of the mounds against the Wisconsin landscape.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MEMBERSHIP JOIN -->
+  <div class="membership-section">
+    <div class="membership-inner">
+      <p class="section-label fade-in">Support the Friends</p>
+      <h2 class="section-title fade-in fade-in-delay-1">Join as a Member</h2>
+      <div class="membership-grid">
+        <div class="fade-in fade-in-delay-2">
+          <p style="font-size:1.05rem; color:rgba(255,255,255,0.88); line-height:1.8; margin-bottom:1.25rem;">Membership in Friends of Aztalan State Park is the most direct way to support the preservation and interpretation of this remarkable site. Every membership dollar goes toward programs, research, and the Visitor Center campaign.</p>
+          <div class="membership-benefits">
+            <div class="membership-benefit">
+              <span class="membership-benefit-check">✓</span>
+              <span class="membership-benefit-text">Monthly newsletter delivered to your inbox</span>
+            </div>
+            <div class="membership-benefit">
+              <span class="membership-benefit-check">✓</span>
+              <span class="membership-benefit-text">Invitations to members-only events and programs</span>
+            </div>
+            <div class="membership-benefit">
+              <span class="membership-benefit-check">✓</span>
+              <span class="membership-benefit-text">Supporting tours, education, and archaeological research</span>
+            </div>
+            <div class="membership-benefit">
+              <span class="membership-benefit-check">✓</span>
+              <span class="membership-benefit-text">Contributing to the $1M Visitor Center capital campaign</span>
+            </div>
+            <div class="membership-benefit">
+              <span class="membership-benefit-check">✓</span>
+              <span class="membership-benefit-text">Recognition as a Friend of Aztalan in our newsletter</span>
+            </div>
+          </div>
+          <p style="font-size:0.88rem; color:rgba(255,255,255,0.65); margin-top:1.5rem; line-height:1.6;">Friends of Aztalan State Park Inc. is a 501(c)(3) nonprofit organization. Donations and memberships may be tax-deductible. EIN: 04-3732507.</p>
+        </div>
+        <div class="membership-form-box fade-in fade-in-delay-3">
+          <h4>Membership Inquiry</h4>
+          <form id="membership-form" novalidate>
+            <div class="form-group">
+              <label for="mem-name">Full Name</label>
+              <input type="text" id="mem-name" name="mem-name" placeholder="Jane Smith" autocomplete="name">
+            </div>
+            <div class="form-group">
+              <label for="mem-email">Email Address</label>
+              <input type="email" id="mem-email" name="mem-email" placeholder="jane@example.com" autocomplete="email">
+            </div>
+            <div class="form-group">
+              <label for="mem-type">Membership Type</label>
+              <select id="mem-type" name="mem-type">
+                <option value="" disabled selected>Select membership…</option>
+                <option value="individual">Individual Membership</option>
+                <option value="family">Family Membership</option>
+                <option value="patron">Patron / Sustaining</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="mem-message">Questions or Comments (optional)</label>
+              <input type="text" id="mem-message" name="mem-message" placeholder="Any questions for us?">
+            </div>
+            <button type="submit" class="btn-green">Submit Inquiry</button>
+            <div style="display:none;" id="mem-success" role="alert" style="margin-top:1rem; padding:1rem; background:rgba(168,216,138,0.2); border-radius:6px; color:#a8d88a; text-align:center; font-weight:700;">
+              ✓ Thank you! We'll be in touch shortly.
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>Friends of Aztalan State Park Inc.</h3>
+        <p class="footer-tagline">Preserving Wisconsin's Ancient Heritage</p>
+        <p class="footer-desc">A 501(c)(3) nonprofit supporting interpretive, scientific, historical, and educational visitor services at Aztalan State Park — Wisconsin's premier archaeological site and a National Historic Landmark since 1964.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Facebook">f</a>
+          <a href="#" aria-label="Instagram">&#9678;</a>
+          <a href="#" aria-label="Twitter">𝕏</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="mission.html">Mission &amp; Values</a></li>
+          <li><a href="history.html">Park History</a></li>
+          <li><a href="projects.html">Programs</a></li>
+          <li><a href="team.html">Board of Directors</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <div class="footer-contact-item">📍 PO Box 855, Lake Mills, WI 53551</div>
+        <div class="footer-contact-item">📞 <a href="tel:6086582854" style="color:inherit;">608-658-2854</a></div>
+        <div class="footer-contact-item">✉ <a href="mailto:info@aztalan.us" style="color:inherit;">info@aztalan.us</a></div>
+        <div class="footer-contact-item" style="margin-top:0.75rem; font-size:0.8rem; opacity:0.7;">EIN: 04-3732507</div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Friends of Aztalan State Park Inc. All rights reserved.</span>
+      <span>EIN: 04-3732507 · Lake Mills, Wisconsin</span>
+    </div>
+  </footer>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+    hamburger.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('open');
+      hamburger.classList.toggle('open', open);
+      hamburger.setAttribute('aria-expanded', open);
+    });
+    navLinks.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        hamburger.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', false);
+      });
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Contact form
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const fname = document.getElementById('fname').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const subject = document.getElementById('subject').value;
+      const message = document.getElementById('message').value.trim();
+      if (!fname || !email || !subject || !message) {
+        alert('Please fill in all required fields.');
+        return;
+      }
+      const success = document.getElementById('form-success');
+      success.style.display = 'block';
+      this.reset();
+      setTimeout(() => { success.style.display = 'none'; }, 6000);
+    });
+
+    // Membership form
+    document.getElementById('membership-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('mem-name').value.trim();
+      const email = document.getElementById('mem-email').value.trim();
+      if (!name || !email) {
+        alert('Please enter your name and email address.');
+        return;
+      }
+      const success = document.getElementById('mem-success');
+      success.style.display = 'block';
+      this.reset();
+      setTimeout(() => { success.style.display = 'none'; }, 6000);
+    });
+  </script>
+</body>
+</html>
