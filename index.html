@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="assets/images/aztalan-logo.svg">
   <title>Friends of Aztalan State Park Inc. — Wisconsin's Ancient Wonder</title>
   <meta name="description" content="Friends of Aztalan State Park Inc. supports, assists, and promotes interpretive, scientific, historical, and educational visitor services at Aztalan State Park, a National Historic Landmark in Jefferson County, Wisconsin.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -78,18 +79,17 @@
       color: var(--color-nav-text);
     }
     .nav-logo {
-      width: 42px;
-      height: 42px;
-      background: var(--color-accent);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Playfair Display', serif;
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: #fff;
+      width: 50px;
+      height: 50px;
+      display: block;
       flex-shrink: 0;
+      object-fit: contain;
+      filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.35));
+      transition: transform 0.25s ease, filter 0.25s ease;
+    }
+    .nav-brand:hover .nav-logo {
+      transform: translateY(-1px) scale(1.04);
+      filter: drop-shadow(0 5px 12px rgba(0, 0, 0, 0.45));
     }
     .nav-brand-text {
       font-family: 'Playfair Display', serif;
@@ -690,7 +690,7 @@
   <div class="nav-wrapper">
     <nav>
       <a href="index.html" class="nav-brand">
-        <div class="nav-logo">A</div>
+        <img src="assets/images/aztalan-logo.svg" alt="Friends of Aztalan logo" class="nav-logo">
         <div class="nav-brand-text">
           Friends of Aztalan
           <span>State Park Inc.</span>
