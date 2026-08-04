@@ -211,43 +211,23 @@
       margin-top: 1rem;
     }
 
-    /* MAP PLACEHOLDER */
+    /* MAP */
     .map-section { background: var(--color-bg-alt); padding: 0; }
-    .map-placeholder {
-      width: 100%;
-      height: 380px;
-      background: linear-gradient(135deg, #d4c9b5 0%, #c5b89f 100%);
+    .map-embed { width: 100%; height: 380px; display: block; border: 0; }
+    .map-caption {
       display: flex;
-      flex-direction: column;
+      flex-wrap: wrap;
       align-items: center;
-      justify-content: center;
-      gap: 1rem;
-      color: var(--color-text-light);
-      position: relative;
-      overflow: hidden;
+      gap: 1.25rem;
+      padding: 1.5rem 2rem;
+      background: #fff;
     }
-    .map-placeholder::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image: url('assets/images/Clouds_Over_Mounds_At_Aztalan_State_Park_139778941.jpeg');
-      background-size: cover;
-      background-position: center;
-      opacity: 0.2;
-    }
-    .map-placeholder-inner {
-      position: relative;
-      text-align: center;
-      background: rgba(255,255,255,0.9);
-      border-radius: 10px;
-      padding: 2rem 3rem;
-      box-shadow: 0 4px 24px rgba(92,61,30,0.15);
-    }
-    .map-pin { font-size: 3rem; display: block; margin-bottom: 0.5rem; }
-    .map-address { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--color-primary); font-weight: 700; margin-bottom: 0.4rem; }
-    .map-sub { font-size: 0.9rem; color: var(--color-text-light); margin-bottom: 1.25rem; }
+    .map-pin { font-size: 2rem; line-height: 1; }
+    .map-address { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--color-primary); font-weight: 700; }
+    .map-sub { font-size: 0.9rem; color: var(--color-text-light); }
     .map-link {
       display: inline-block;
+      margin-left: auto;
       background: var(--color-accent);
       color: #fff;
       padding: 0.65rem 1.5rem;
@@ -397,6 +377,13 @@
             <div class="contact-item">
               <div class="contact-item-icon">📍</div>
               <div class="contact-item-body">
+                <div class="contact-item-label">Physical Address</div>
+                <div class="contact-item-value">433 E Washington St<br>Lake Mills, WI 53551</div>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-item-icon">📬</div>
+              <div class="contact-item-body">
                 <div class="contact-item-label">Mailing Address</div>
                 <div class="contact-item-value">PO Box 855<br>Lake Mills, WI 53551</div>
               </div>
@@ -433,7 +420,7 @@
 
           <div class="directions-card fade-in fade-in-delay-3">
             <h4>📌 Directions to the Park</h4>
-            <p><strong>Physical address:</strong> N6200 County Highway Q, Lake Mills, WI 53551</p>
+            <p><strong>Park address:</strong> N6200 County Highway Q, Lake Mills, WI 53551</p>
             <p>Aztalan State Park is located approximately 3 miles east of Lake Mills, Wisconsin, off County Highway Q. From Interstate 94, take Exit 267 toward Lake Mills, then follow County Q east approximately 1.5 miles to the park entrance on the right.</p>
             <p>The park is approximately 40 miles east of Madison and 60 miles west of Milwaukee — accessible from both the Madison and Milwaukee metro areas.</p>
           </div>
@@ -494,13 +481,14 @@
 
   <!-- MAP -->
   <div class="map-section">
-    <div class="map-placeholder" role="img" aria-label="Map placeholder showing location of Aztalan State Park">
-      <div class="map-placeholder-inner">
-        <span class="map-pin">📍</span>
+    <iframe class="map-embed" src="https://www.google.com/maps?q=Aztalan+State+Park,+N6200+County+Highway+Q,+Lake+Mills,+WI+53551&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Map showing the location of Aztalan State Park"></iframe>
+    <div class="map-caption">
+      <span class="map-pin">📍</span>
+      <div>
         <div class="map-address">Aztalan State Park</div>
         <div class="map-sub">N6200 County Highway Q, Lake Mills, WI 53551</div>
-        <a href="https://maps.google.com/?q=Aztalan+State+Park,+N6200+County+Highway+Q,+Lake+Mills,+WI+53551" target="_blank" rel="noopener noreferrer" class="map-link">Open in Google Maps</a>
       </div>
+      <a href="https://maps.google.com/?q=Aztalan+State+Park,+N6200+County+Highway+Q,+Lake+Mills,+WI+53551" target="_blank" rel="noopener noreferrer" class="map-link">Open in Google Maps</a>
     </div>
   </div>
 
@@ -635,9 +623,7 @@
         <p class="footer-tagline">Preserving Wisconsin's Ancient Heritage</p>
         <p class="footer-desc">A 501(c)(3) nonprofit supporting interpretive, scientific, historical, and educational visitor services at Aztalan State Park — Wisconsin's premier archaeological site and a National Historic Landmark since 1964.</p>
         <div class="footer-social">
-          <a href="#" aria-label="Facebook">f</a>
-          <a href="#" aria-label="Instagram">&#9678;</a>
-          <a href="#" aria-label="Twitter">𝕏</a>
+          <a href="https://www.facebook.com/groups/661766400660116/" target="_blank" rel="noopener noreferrer" aria-label="Facebook Group">f</a>
         </div>
       </div>
       <div class="footer-col">
@@ -653,7 +639,8 @@
       </div>
       <div class="footer-col">
         <h4>Contact</h4>
-        <div class="footer-contact-item">📍 PO Box 855, Lake Mills, WI 53551</div>
+        <div class="footer-contact-item">📍 433 E Washington St, Lake Mills, WI 53551</div>
+        <div class="footer-contact-item" style="font-size:0.85rem; opacity:0.8;">Mailing: PO Box 855</div>
         <div class="footer-contact-item">📞 <a href="tel:6086582854" style="color:inherit;">608-658-2854</a></div>
         <div class="footer-contact-item">✉ <a href="mailto:info@aztalan.us" style="color:inherit;">info@aztalan.us</a></div>
         <div class="footer-contact-item" style="margin-top:0.75rem; font-size:0.8rem; opacity:0.7;">EIN: 04-3732507</div>
