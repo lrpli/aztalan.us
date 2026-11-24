@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/enhancements.css">
   <style>
     :root {
       --color-primary: #5C3D1E;
@@ -321,6 +322,7 @@
   </style>
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
 
   <div class="top-bar">
     <a href="mailto:info@aztalan.us">✉ info@aztalan.us</a>
@@ -339,7 +341,7 @@
           <span>State Park Inc.</span>
         </div>
       </a>
-      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links">
         <span></span><span></span><span></span>
       </button>
       <ul class="nav-links" id="nav-links">
@@ -348,7 +350,7 @@
         <li><a href="history.html">History</a></li>
         <li><a href="projects.html">Programs</a></li>
         <li><a href="team.html">Team</a></li>
-        <li><a href="contact.html" class="active">Contact</a></li>
+        <li><a href="contact.html" class="active" aria-current="page">Contact</a></li>
       </ul>
     </nav>
   </div>
@@ -364,7 +366,7 @@
   </div>
 
   <!-- CONTACT + FORM -->
-  <section>
+  <section id="main-content" tabindex="-1">
     <div class="container">
       <div class="contact-grid">
 
@@ -430,7 +432,7 @@
         <div class="contact-form-wrap fade-in fade-in-delay-1">
           <h3>Send Us a Message</h3>
           <p>Questions about tours, membership, volunteering, or the park? We'll get back to you promptly.</p>
-          <form id="contact-form" novalidate>
+          <form id="contact-form">
             <div class="form-row">
               <div class="form-group">
                 <label for="fname">First Name <span aria-hidden="true" style="color:var(--color-accent);">*</span></label>
@@ -470,7 +472,7 @@
               <button type="submit" class="btn-submit">Send Message</button>
             </div>
             <div class="form-success" id="form-success" role="alert">
-              ✓ Thank you! Your message has been received. We'll be in touch soon.
+              Your email app is opening with this message ready to send to info@aztalan.us.
             </div>
           </form>
         </div>
@@ -584,18 +586,18 @@
         </div>
         <div class="membership-form-box fade-in fade-in-delay-3">
           <h4>Membership Inquiry</h4>
-          <form id="membership-form" novalidate>
+          <form id="membership-form">
             <div class="form-group">
               <label for="mem-name">Full Name</label>
-              <input type="text" id="mem-name" name="mem-name" placeholder="Jane Smith" autocomplete="name">
+              <input type="text" id="mem-name" name="mem-name" placeholder="Jane Smith" autocomplete="name" required>
             </div>
             <div class="form-group">
               <label for="mem-email">Email Address</label>
-              <input type="email" id="mem-email" name="mem-email" placeholder="jane@example.com" autocomplete="email">
+              <input type="email" id="mem-email" name="mem-email" placeholder="jane@example.com" autocomplete="email" required>
             </div>
             <div class="form-group">
               <label for="mem-type">Membership Type</label>
-              <select id="mem-type" name="mem-type">
+              <select id="mem-type" name="mem-type" required>
                 <option value="" disabled selected>Select membership…</option>
                 <option value="individual">Individual Membership</option>
                 <option value="family">Family Membership</option>
@@ -607,8 +609,8 @@
               <input type="text" id="mem-message" name="mem-message" placeholder="Any questions for us?">
             </div>
             <button type="submit" class="btn-green">Submit Inquiry</button>
-            <div style="display:none;" id="mem-success" role="alert" style="margin-top:1rem; padding:1rem; background:rgba(168,216,138,0.2); border-radius:6px; color:#a8d88a; text-align:center; font-weight:700;">
-              ✓ Thank you! We'll be in touch shortly.
+            <div id="mem-success" role="status" style="display:none; margin-top:1rem; padding:1rem; background:rgba(168,216,138,0.2); border-radius:6px; color:#d4e8c2; text-align:center; font-weight:700;">
+              Your email app is opening with your membership inquiry ready to send.
             </div>
           </form>
         </div>
@@ -647,7 +649,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2025 Friends of Aztalan State Park Inc. All rights reserved.</span>
+      <span>© <span data-current-year>2026</span> Friends of Aztalan State Park Inc. All rights reserved.</span>
       <span>EIN: 04-3732507 · Lake Mills, Wisconsin</span>
     </div>
   </footer>
@@ -678,34 +680,39 @@
     // Contact form
     document.getElementById('contact-form').addEventListener('submit', function(e) {
       e.preventDefault();
-      const fname = document.getElementById('fname').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const subject = document.getElementById('subject').value;
-      const message = document.getElementById('message').value.trim();
-      if (!fname || !email || !subject || !message) {
-        alert('Please fill in all required fields.');
-        return;
-      }
+      if (!this.reportValidity()) return;
+      const data = new FormData(this);
+      const topic = document.getElementById('subject').selectedOptions[0].text;
+      const body = [
+        `Name: ${data.get('fname')} ${data.get('lname')}`,
+        `Email: ${data.get('email')}`,
+        `Phone: ${data.get('phone') || 'Not provided'}`,
+        '',
+        data.get('message')
+      ].join('\n');
       const success = document.getElementById('form-success');
       success.style.display = 'block';
-      this.reset();
-      setTimeout(() => { success.style.display = 'none'; }, 6000);
+      window.location.href = `mailto:info@aztalan.us?subject=${encodeURIComponent(`Website inquiry: ${topic}`)}&body=${encodeURIComponent(body)}`;
     });
 
     // Membership form
     document.getElementById('membership-form').addEventListener('submit', function(e) {
       e.preventDefault();
-      const name = document.getElementById('mem-name').value.trim();
-      const email = document.getElementById('mem-email').value.trim();
-      if (!name || !email) {
-        alert('Please enter your name and email address.');
-        return;
-      }
+      if (!this.reportValidity()) return;
+      const data = new FormData(this);
+      const level = document.getElementById('mem-type').selectedOptions[0].text;
+      const body = [
+        `Name: ${data.get('mem-name')}`,
+        `Email: ${data.get('mem-email')}`,
+        `Membership interest: ${level}`,
+        '',
+        data.get('mem-message') || 'No additional comments.'
+      ].join('\n');
       const success = document.getElementById('mem-success');
       success.style.display = 'block';
-      this.reset();
-      setTimeout(() => { success.style.display = 'none'; }, 6000);
+      window.location.href = `mailto:info@aztalan.us?subject=${encodeURIComponent(`Membership inquiry: ${level}`)}&body=${encodeURIComponent(body)}`;
     });
   </script>
+  <script src="assets/site.js"></script>
 </body>
 </html>

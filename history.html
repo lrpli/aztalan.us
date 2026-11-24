@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/enhancements.css">
   <style>
     :root {
       --color-primary: #5C3D1E;
@@ -194,6 +195,7 @@
   </style>
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
 
   <div class="top-bar">
     <a href="mailto:info@aztalan.us">✉ info@aztalan.us</a>
@@ -212,13 +214,13 @@
           <span>State Park Inc.</span>
         </div>
       </a>
-      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links">
         <span></span><span></span><span></span>
       </button>
       <ul class="nav-links" id="nav-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="mission.html">Mission</a></li>
-        <li><a href="history.html" class="active">History</a></li>
+        <li><a href="history.html" class="active" aria-current="page">History</a></li>
         <li><a href="projects.html">Programs</a></li>
         <li><a href="team.html">Team</a></li>
         <li><a href="contact.html">Contact</a></li>
@@ -237,7 +239,7 @@
   </div>
 
   <!-- FOUNDING STORY -->
-  <section>
+  <section id="main-content" tabindex="-1">
     <div class="container">
       <div class="story-grid">
         <div class="story-text">
@@ -470,7 +472,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2025 Friends of Aztalan State Park Inc. All rights reserved.</span>
+      <span>© <span data-current-year>2026</span> Friends of Aztalan State Park Inc. All rights reserved.</span>
       <span>EIN: 04-3732507 · Lake Mills, Wisconsin</span>
     </div>
   </footer>
@@ -497,5 +499,6 @@
     }, { threshold: 0.1 });
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
   </script>
+  <script src="assets/site.js"></script>
 </body>
 </html>

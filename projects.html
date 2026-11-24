@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/enhancements.css">
   <style>
     :root {
       --color-primary: #5C3D1E;
@@ -238,6 +239,7 @@
   </style>
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
 
   <div class="top-bar">
     <a href="mailto:info@aztalan.us">✉ info@aztalan.us</a>
@@ -256,14 +258,14 @@
           <span>State Park Inc.</span>
         </div>
       </a>
-      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links">
         <span></span><span></span><span></span>
       </button>
       <ul class="nav-links" id="nav-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="mission.html">Mission</a></li>
         <li><a href="history.html">History</a></li>
-        <li><a href="projects.html" class="active">Programs</a></li>
+        <li><a href="projects.html" class="active" aria-current="page">Programs</a></li>
         <li><a href="team.html">Team</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
@@ -281,7 +283,7 @@
   </div>
 
   <!-- PROGRAMS GRID -->
-  <section>
+  <section id="main-content" tabindex="-1">
     <div class="container">
       <p class="section-label fade-in">Our Work</p>
       <h2 class="section-title fade-in fade-in-delay-1">Programs &amp; Initiatives</h2>
@@ -470,14 +472,14 @@
           <p class="fade-in fade-in-delay-2">Each summer, Friends of Aztalan State Park hosts one of Jefferson County's most unique events: Indigenous Gardening Day. This special gathering honors the deep agricultural knowledge of the Mississippian people who farmed these Wisconsin soils over a thousand years ago.</p>
           <p class="fade-in fade-in-delay-2">Visitors can experience hands-on demonstrations of traditional horticulture practices, explore the park's gardens of historically significant native plants, and hear stories about how food production shaped Aztalan's society and culture.</p>
           <div class="event-details-box fade-in fade-in-delay-3">
-            <h4>2026 Event Details</h4>
+            <h4>Next Event</h4>
             <div class="event-detail-item">
               <span>📅</span>
-              <span><strong>Date:</strong> Sunday, June 7, 2026</span>
+              <span><strong>Date:</strong> Announced annually</span>
             </div>
             <div class="event-detail-item">
               <span>🕛</span>
-              <span><strong>Time:</strong> Noon (12:00 PM)</span>
+              <span><strong>Time:</strong> Contact us for the latest schedule</span>
             </div>
             <div class="event-detail-item">
               <span>📍</span>
@@ -563,7 +565,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2025 Friends of Aztalan State Park Inc. All rights reserved.</span>
+      <span>© <span data-current-year>2026</span> Friends of Aztalan State Park Inc. All rights reserved.</span>
       <span>EIN: 04-3732507 · Lake Mills, Wisconsin</span>
     </div>
   </footer>
@@ -602,5 +604,6 @@
     }, { threshold: 0.3 });
     document.querySelectorAll('.progress-bar-fill').forEach(bar => barObserver.observe(bar));
   </script>
+  <script src="assets/site.js"></script>
 </body>
 </html>
